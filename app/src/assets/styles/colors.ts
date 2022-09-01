@@ -6,11 +6,12 @@ export const colors = {
 
     shadowColor: '#6CEA69',
 
-    baseBg1: "#FF0000",
+    baseBg1: "#252525",
     baseBg2: "#1F1D2B",
     baseForm: "#2D303E",
     baseLine: "#393C49",
 
+    logoColor: "#FAE634",
     textColor: "#ffffff",
     textLighter: "#E0E6E9",
     textLight: "#ABBBC2",

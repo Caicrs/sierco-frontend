@@ -1,14 +1,13 @@
 import styled, { css } from "styled-components";
 
+
 export const Home = styled.section`
-${({ theme }) => css`
-  background-color: ${theme.colors.baseBg1};
-  min-width: 100vw;
-  min-height: 100vh;
-  color: ${theme.colors.textColor};
-  display: flex;
-  justify-content: space-between;
-`}
+  ${({ theme }) => css`
+    background-color: ${theme.colors.baseBg1};
+    min-width: 100vw;
+    min-height: 100vh;
+    color: ${theme.colors.textColor};
+  `}
 `;
 
 export const HomeContent = styled.main`
@@ -95,3 +94,51 @@ export const HomeProductListGap = styled.div`
     width: 200px;
   `}
 `;
+
+export const BoxContent = styled.div`
+  margin: 0 5rem 0 5rem;
+  display: flex;
+`;
+
+export const BoxLeft = styled.div`
+  width: 100%;
+  padding: 8rem 0 0 0;
+
+  font-weight: bold;
+`;
+
+export const BoxRight = styled.div`
+  height: 75vh;
+  width: 100%;
+
+`;
+export const H1 = styled.h1`
+  font-size: 3rem;
+  margin: 0;
+`;
+
+export const H5 = styled.h5`
+  font-weight: 400;
+  margin: 0.5rem 0 0 0;
+  opacity: 0.25;
+`;
+
+export const Button = styled.div`
+  ${({ theme }) => css`
+  width: fit-content;
+  margin: 6rem 0 0 0 ;
+    padding: 1rem 2rem 1rem 2rem;
+    background: ${theme.colors.logoColor};
+    color: ${theme.colors.baseBg1};
+    border-radius:1rem ;
+    transition:0.3s;
+    cursor:pointer;
+    &:hover{
+      background: transparent;
+      color: ${theme.colors.logoColor};
+      border: 1px solid ${theme.colors.logoColor};
+    }
+  `}
+`;
+
+
