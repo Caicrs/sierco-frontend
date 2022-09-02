@@ -144,6 +144,7 @@ export const Btn_Entrar = styled.div`
     text-align: center;
     margin: 5rem auto 0 auto;
     cursor:pointer;
+    border: 1px solid transparent;
     border-radius: 1rem;
     transition:0.3s;
     &:hover{

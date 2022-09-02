@@ -1,1 +1,228 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+
+export const Container = styled.section`
+  ${({ theme }) => css`
+    background-color: white;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow-x: none;
+    color: ${theme.colors.textColor};
+  `}
+`;
+export const TextBg = styled.h1`
+  ${({ theme }) => css`
+    font-size: 22rem;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    background: #fae634;
+    background: linear-gradient(to right, #fae634 10%, white 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: -2rem 0;
+  `}
+`;
+export const TextBg2 = styled.h1`
+  ${({ theme }) => css`
+    font-size: 22rem;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    background: #fae634;
+    background: linear-gradient(to right, #fae634 10%, white 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 18rem 0;
+    transform: rotate(180deg);
+  `}
+`;
+
+export const Form = styled.div`
+  width: 100%;
+  height: 500px;
+  position: absolute;
+  top: 5rem;
+`;
+
+export const FormBox = styled.div`
+  ${({ theme }) => css`
+    width: 25rem;
+    height: 100%;
+    border-radius: 3rem;
+    background: ${theme.colors.baseBg1};
+    margin: 0 auto;
+  `}
+`;
+
+export const Logo = styled.h1`
+  ${({ theme }) => css`
+    padding: 3rem 0 0 0;
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+    color: ${theme.colors.logoColor};
+  `}
+`;
+
+export const InputContainer = styled.div`
+  ${({ theme }) => css`
+    width: 70%;
+    display: flex;
+    height: 2.5rem;
+    margin: 1.5rem auto auto auto;
+    border: none;
+    border-bottom: 2px solid ${theme.colors.logoColor};
+  `}
+`;
+
+export const Input = styled.input`
+  ${({ theme }) => css`
+    width: 98.5%;
+    height: 100%;
+    font-size: 16px;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    color: white;
+    box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.1);
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+    ::placeholder {
+      color: white;
+      font-weight: 300;
+      opacity: 0.5;
+    }
+    &:focus {
+      outline: none;
+    }
+  `}
+`;
+
+export const InputPass = styled.input`
+  ${({ theme }) => css`
+    width: 98.5%;
+    height: 100%;
+    font-size: 16px;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    color: white;
+    box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.1);
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+    ::placeholder {
+      color: white;
+      font-weight: 300;
+      opacity: 0.5;
+    }
+    &:focus {
+      outline: none;
+    }
+  `}
+`;
+
+export const Eye = styled.div`
+  width: 2rem;
+  height: 100%;
+`;
+
+export const Icon = styled.img`
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+  margin-top: 0.6rem;
+`;
+
+export const Btns = styled.div`
+  ${({ theme }) => css`
+    width: 70%;
+    height: fit-content;
+    font-weight: 700;
+    display: flex;
+    text-align: center;
+    padding:3rem 0 0 0;
+    margin: 3rem auto 0 auto;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    transition: 0.3s;
+  `}
+`;
+
+export const SubBtns = styled.div`
+${({ theme }) => css`
+width: 100%;
+`}
+` 
+
+export const Buttons = styled.h5`
+  ${({ theme }) => css`
+  cursor:pointer;
+  color:${theme.colors.logoColor};
+    width: fit-content;
+    font-size:1.15rem;
+    margin:0;
+  `}
+`;
+
+export const NextBtn = styled(Buttons)`
+float:right;
+`;
+
+export const SmallText = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-top: 1.5rem;
+  `}
+`;
+
+export const Link_Create = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+
+export const LevelBlock = styled.div`
+  width: 42%;
+  height: 3rem;
+  margin: 2rem auto;
+  display: flex;
+`;
+
+export const Circle = styled.div`
+  ${({ theme }) => css`
+    background: ${(props) => props.theme.background};
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+  `}
+`;
+
+export const WhiteCircle = styled(Circle)`${({ theme }) => css`
+background: white;
+`}`;
+
+export const CircleNumber = styled.h1`
+  ${({ theme }) => css`
+    margin: 0;
+    color: ${(props) => props.theme.color};
+    text-align: right;
+    padding: 0.5rem;
+    color: ${theme.colors.baseBg1};
+    text-align: center;
+  `}
+`;
+
+export const Line = styled.div`
+  ${({ theme }) => css`
+    border-bottom: 5px solid;
+    border-color: ${theme.colors.textColor};
+    width: 50%;
+    height: 45%;
+  `}
+`;
+
+export const YellowLine = styled(Line)`
+${({ theme }) => css`border-color: ${theme.colors.logoColor};`}
+`;
