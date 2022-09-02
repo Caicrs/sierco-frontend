@@ -6,6 +6,15 @@ import { useState } from "react";
 const Register = () => {
   const [eyeicon, setEyeicon] = useState(eye2);
   const [level, setLevel] = useState(0);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpf, setCpf] = useState("");
+
+  function Register2(){
+    alert(name + email + password + cpf);
+  }
+
   return (
     <S.Container>
       <S.TextBg>SIER.co</S.TextBg>
@@ -32,26 +41,54 @@ const Register = () => {
           </S.LevelBlock>
 
           <S.InputContainer>
-            <S.Input placeholder="Insira seu email"></S.Input>
+            {level === 0 ? (
+              <S.Input
+              value={name}
+                placeholder="Insira seu nome"
+                onChange={(event) => setName(event.target.value)}
+              ></S.Input>
+            ) : (
+              <S.Input
+              value={cpf}
+              placeholder="Insira seu cpf"
+              onChange={(event) => setCpf(event.target.value)}
+            ></S.Input>
+            )}
+          
           </S.InputContainer>
+          
           <S.InputContainer>
-            <S.InputPass
-              placeholder="Insira sua senha"
-              type={eyeicon === eye2 ? "password" : "text"}
-            ></S.InputPass>
-            <S.Eye>
-              <S.Icon
-                src={eyeicon}
-                onClick={() => setEyeicon(eyeicon === eye2 ? eye1 : eye2)}
-              ></S.Icon>
-            </S.Eye>
+            {level === 0 ? (
+              <S.Input
+                value={email}
+                placeholder="Insira seu email"
+                onChange={(event) => setEmail(event.target.value)}
+              ></S.Input>
+            ) : (
+              <S.InputPass
+                value={password}
+                placeholder="Insira uma senha"
+                onChange={(event) => setPassword(event.target.value)}
+                type={eyeicon === eye2 ? "password" : "text"}
+              ></S.InputPass>
+            )}
+            {level === 0 ? (
+              ""
+            ) : (
+              <S.Eye>
+                <S.Icon
+                  src={eyeicon}
+                  onClick={() => setEyeicon(eyeicon === eye2 ? eye1 : eye2)}
+                ></S.Icon>
+              </S.Eye>
+            )}
           </S.InputContainer>
 
           {/* FALTA CONFIGURAR MELHOR O "VOLTAR" E "PŔOXIMO" + INTERATIVIDADE E SMOOTH TRANSITION COM AS BOLINHAS DE LEVEL REGISTER */}
           {level === 0 ? (
             <S.Btns>
               <S.SubBtns>
-                <S.NextBtn onClick={() => setLevel(1)}>Próximo</S.NextBtn>
+                <S.NextBtn onClick={() => name === "" || email === "" ? alert("preencha os campos") : setLevel(1) }>Próximo</S.NextBtn>
               </S.SubBtns>
             </S.Btns>
           ) : (
@@ -60,7 +97,7 @@ const Register = () => {
                 <S.Buttons onClick={() => setLevel(0)}>Voltar</S.Buttons>
               </S.SubBtns>
               <S.SubBtns>
-                <S.NextBtn onClick={() => setLevel(1)}>Próximo</S.NextBtn>
+                <S.NextBtn onClick={Register2}>Finalizar</S.NextBtn>
               </S.SubBtns>
             </S.Btns>
           )}
