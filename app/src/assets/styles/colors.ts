@@ -7,10 +7,11 @@ export const colors = {
     shadowColor: '#6CEA69',
 
     baseBg1: "#252525",
-    baseBg2: "#1F1D2B",
+    baseBg2: "#2F2F2F",
+    baseBg3: "#424141",
     baseForm: "#2D303E",
     baseLine: "#393C49",
-
+    white: "#FFFFFF",
     logoColor: "#FAE634",
     textColor: "#ffffff",
     textLighter: "#E0E6E9",
