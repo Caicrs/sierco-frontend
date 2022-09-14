@@ -1,23 +1,18 @@
 import styled, { css, keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
-const bounceAnimation = keyframes`
+const FadeAnimation = keyframes`
 	from {color: white; opacity:0.5}
   to {color: white; }
 
 `;
 
-const bounceAnimation2 = keyframes`
+const FadeAnimation2 = keyframes`
 	from {opacity:0}
   to {opacity:1;}
 
 `;
 
-const fadeIn = keyframes`
-  from {height:0}
-  to {height:1;}
-`;
 
 export const NavbarDiv = styled.div`
   ${({ theme }) => css`
@@ -71,7 +66,7 @@ export const CreateBtnCenter = styled.div`
   color: white;
   margin: 0 1.5rem 0 1.5rem;
   cursor: pointer;
-  animation: 0.5s linear ${bounceAnimation};
+  animation: 0.5s linear ${FadeAnimation};
 `;
 
 export const CreateBtnCenterOpacity = styled.div`
@@ -115,7 +110,7 @@ export const Icon = styled.img`
   height: 20px;
   margin-left: 1rem;
   cursor: pointer;
-  animation: 0.5s linear ${bounceAnimation2};
+  animation: 0.5s linear ${FadeAnimation2};
 `;
 
 export const Icon2 = styled(Icon)``;
