@@ -10,7 +10,7 @@ export const Container = styled.section`
 export const Topic = styled.div`
   ${({ theme }) => css`
     width: 88.5%;
-    padding: 4.5rem 0 0 0;
+    padding: 1.5rem 0 0 0;
     margin: 0 auto;
     color: ${theme.colors.textColor};
     font-size: 1.5rem;

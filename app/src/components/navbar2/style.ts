@@ -17,7 +17,7 @@ const FadeAnimation2 = keyframes`
 export const NavbarDiv = styled.div`
   ${({ theme }) => css`
     padding: 0;
-    margin: 0;
+    margin: 0 0 2rem 0;
     width: 100%;
     height: fit-content;
     display: flex;
