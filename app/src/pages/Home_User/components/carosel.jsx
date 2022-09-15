@@ -18,7 +18,7 @@ function MainCarousel() {
   return (
     <>
       <S.ContainerCarousel>
-        <Carousel showArrows={false} breakPoints={breakPoints}>
+        <Carousel transitionMs={10} showArrows={false} breakPoints={breakPoints}>
           {data.map((i) => (
             <S.Card key={i}>
               <S.Image draggable={false} src="https://cdn.clickwallpapers.net/images/clickwallpapers-game-resident-evil-4-classic-1920x1080-img7.jpg"></S.Image>

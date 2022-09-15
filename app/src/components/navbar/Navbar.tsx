@@ -8,11 +8,7 @@ const Navbar = () => {
         <S.NavbarLink to="/login" >
         <S.CreateBtn>Entrar</S.CreateBtn>
         </S.NavbarLink>
-        <S.Bar>|</S.Bar>
-        <S.NavbarLink to="/register" >
-          {" "}
-          <S.CreateBtn>Criar Conta</S.CreateBtn>
-        </S.NavbarLink>
+
       </S.ButtonsNav>
     </S.NavbarDiv>
   );
