@@ -5,11 +5,10 @@ const mobile: string = "768px";
 const desktop: string = "1024px";
 const tablet: string = "825px";
 
-export const Home = styled.section`
+export const Home = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.baseBg1};
-    width: 100vw;
-    height: 100%;
+    overflow-x:hidden;
     color: ${theme.colors.textColor};
   `}
 `;
@@ -179,7 +178,6 @@ export const MobileButtons = styled.div`
     width: 100%;
     padding: 5rem 0 0 0;
   }
-
   @media (max-width: ${desktop}) and (min-width: ${mobile}) {
     padding-top: 8rem;
   }
@@ -205,6 +203,7 @@ export const BtnMobile = styled(Button)`
 export const H3 = styled.h3`
   ${({ theme }) => css`
     text-align: center;
+    padding:1rem 0 1rem 0 ;
     color: ${theme.colors.logoColor};
   `}
 `;

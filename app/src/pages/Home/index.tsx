@@ -1,7 +1,7 @@
 import * as S from "./style";
 import Navbar from "components/navbar/Navbar";
 import Session1 from "./components/session_1";
-import Footer from "../../components/footer/footer"
+import Footer from "../../components/footer/footer";
 
 const Home = () => {
   return (
