@@ -3,9 +3,9 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.section`
   ${({ theme }) => css`
-    background-color: white;
-    min-width: 100vw;
-    min-height: 100vh;
+    background-color:red;
+    width: 100%;
+    height: 100%;
     overflow-x: none;
     color: ${theme.colors.textColor};
   `}
@@ -15,7 +15,7 @@ export const TextBg = styled.h1`
     font-size: 22rem;
     width: 100%;
     text-align: center;
-    position: fixed;
+    position: absolute;
     background: #fae634;
     background: linear-gradient(to right, #fae634 10%, white 100%);
     -webkit-background-clip: text;
@@ -33,21 +33,22 @@ export const TextBg2 = styled.h1`
     background: linear-gradient(to right, #fae634 10%, white 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 18rem 0;
+    margin: 18rem 0 0 0;
+
     transform: rotate(180deg);
   `}
 `;
 
 export const Form = styled.div`
   width: 100%;
-  height: 500px;
+  height: 450px;
   position: absolute;
   top: 5rem;
 `;
 
 export const FormBox = styled.div`
   ${({ theme }) => css`
-    width: 30%;
+    width: 22rem;
     height: 100%;
     border-radius: 3rem;
     background: ${theme.colors.baseBg1};
@@ -57,10 +58,10 @@ export const FormBox = styled.div`
 
 export const Logo = styled.h1`
   ${({ theme }) => css`
-    padding: 3rem 0 0 0;
+    padding: 2.5rem 0 0 0;
     width: 100%;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
     color: ${theme.colors.logoColor};
   `}
@@ -71,7 +72,7 @@ export const InputContainer = styled.div`
     width: 70%;
     display:flex;
     height: 2.5rem;
-    margin: 3rem auto auto auto;
+    margin: 2rem auto auto auto;
     border:none;
     border-bottom: 2px solid ${theme.colors.logoColor};  
   `}
@@ -92,6 +93,7 @@ export const Input = styled.input`
       color: white;
       font-weight: 300;
       opacity: 0.5;
+      font-size:0.9rem;
     }
     &:focus{
       outline:none;
@@ -114,6 +116,7 @@ export const InputPass = styled.input`
       color: white;
       font-weight: 300;
       opacity: 0.5;
+      font-size:0.9rem;
     }
     &:focus{
       outline:none;
@@ -136,16 +139,16 @@ margin-top: 0.60rem;
 export const Btn_Entrar = styled.div`
   ${({ theme }) => css`
     width: 70%;
-    font-size:1.25rem;
+    font-size:1rem;
     color: ${theme.colors.baseBg1};
     font-weight:700;
-    padding: 1rem 0 1rem 0;
+    padding: 0.5rem 0 0.5rem 0;
     background: ${theme.colors.logoColor};
     text-align: center;
     margin: 5rem auto 0 auto;
     cursor:pointer;
     border: 1px solid transparent;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     transition:0.3s;
     &:hover{
       color: ${theme.colors.logoColor};

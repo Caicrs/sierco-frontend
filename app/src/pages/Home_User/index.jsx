@@ -1,6 +1,7 @@
 import * as S from "./style";
 import Navbar2 from "components/navbar2/Navbar";
 import MainCarousel from "./components/carosel";
+import Footer from "components/footer/footer";
 
 const HomeUser = () => {
   return (
@@ -14,6 +15,7 @@ const HomeUser = () => {
       <MainCarousel></MainCarousel>
       <S.Topic>Ação</S.Topic>
       <MainCarousel></MainCarousel>
+      <Footer></Footer>
     </S.Container>
   );
 };
