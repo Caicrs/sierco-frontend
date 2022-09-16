@@ -5,15 +5,19 @@ const mobile: string = "768px";
 const desktop: string = "1024px";
 const tablet: string = "825px";
 
-export const FooterContainer = styled.div`
-  ${({ theme }) => css`
-  margin:5rem 0 0 0;
-width:100vw;
+export const Box = styled.div`
+  background: black;
+  width: 100%;
 
-    background: red;
-  `}
+  @media (max-width: 1000px) {
+    padding: 70px 30px;
+  }
 `;
-
-export const Content = styled.div`
-background:green;
+export const Box2 = styled.div`
+  background: green;
+  width: 100%;
+padding: 6rem 2rem;
+  @media (max-width: 1000px) {
+    padding: 70px 30px;
+  }
 `;
