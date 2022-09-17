@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
-const mobile: string = "768px";
 const desktop: string = "1024px";
 const tablet: string = "825px";
 
@@ -18,18 +17,22 @@ export const NavbarDiv = styled.div`
 
 export const LogoText = styled.h1`
   ${({ theme }) => css`
-    margin: 0;
-    font-size: 2.5rem;
-    width: fit-content;
     color: ${theme.colors.logoColor};
-    padding: 1rem 0 1rem 5rem;
+    // Mobile X Tablet
+    @media (min-width: 0) and (max-width: ${tablet}) {
+      width: 100%;
+      font-size: 3rem;
+      text-align: center;
+      padding: 3rem 0 1rem 0;
+    }
+     // Desktop
+     @media (min-width: ${tablet}) {
+      margin: 0;
+      font-size: 2.5rem;
+      padding: 1rem 0 1rem 5rem;
+      width: fit-content;
+    }
   `}
-  @media (max-width: ${tablet}) {
-    // For largest of Container in mobile devices
-    width: 100%;
-    text-align: center;
-    padding-left: 0;
-  }
 `;
 
 export const ButtonsNav = styled.div`
@@ -58,14 +61,6 @@ export const CreateBtn = styled.div`
       opacity: 1;
     }
   `}
-`;
-
-export const Bar = styled.div`
-  margin: 2.5rem 0 0 0;
-  padding: 0 0 0 2rem;
-  width: fit-content;
-  float: right;
-  opacity: 0.25;
 `;
 
 export const NavbarLink = styled(Link)`

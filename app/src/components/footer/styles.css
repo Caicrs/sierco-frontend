@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+ 
+  text-decoration: none;
+  list-style-type: none;
+
+}
+
+
+
+.container {
+    font-size: 12px;
+    font-weight: 300;
+    transition: ease 0.5s;
+  background: #4a4a4a;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 3rem 5rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo {
+  font-size: 80px;
+  color: #284dd9;
+}
+
+.main {
+  display: flex;
+  gap: 50px;
+  margin: 50px 0;
+}
+.col1 {
+  flex: 2;
+}
+.col2 {
+  flex: 2;
+}
+.col3 {
+  flex: 3;
+}
+.heading {
+  font-size: 16px;
+  font-weight: 600;
+}
+.main a {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 0;
+  color: black;
+}
+.main a:hover {
+  color: #284dd9;
+}
+.partner-logo {
+  font-size: 50px;
+  color: tomato;
+  margin-top: 10px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.copyright {
+  color: gray;
+}
+.policy a {
+  color: black;
+  margin-left: 20px;
+}
+
+.circle {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  border: solid 2px #d2dcf7;
+}
+.c1 {
+  top: -600px;
+  left: -500px;
+}
+.c2 {
+  bottom: -600px;
+  right: -200px;
+}
+.c3 {
+  bottom: -400px;
+  right: -500px;
+}
