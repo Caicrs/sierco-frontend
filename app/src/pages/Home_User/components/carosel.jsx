@@ -7,7 +7,7 @@ import starLowIcon from "../Img/Star-low.svg";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2 },
+  { width: 550, itemsToShow: 3 },
   { width: 768, itemsToShow: 3 },
   { width: 1200, itemsToShow: 5 },
 ];
@@ -18,8 +18,8 @@ function MainCarousel() {
   return (
     <>
       <S.ContainerCarousel>
-        <Carousel transitionMs={10} showArrows={false} breakPoints={breakPoints}>
-          {data.map((i) => (
+        <Carousel transitionMs={300} showArrows={false} breakPoints={breakPoints}>
+        {data.map((i) => (
             <S.Card key={i}>
               <S.Image draggable={false} src="https://cdn.clickwallpapers.net/images/clickwallpapers-game-resident-evil-4-classic-1920x1080-img7.jpg"></S.Image>
               <S.Title>#{i}| Resident Evil 4</S.Title>
