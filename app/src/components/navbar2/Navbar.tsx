@@ -31,9 +31,9 @@ const Navbar2 = () => {
 
   return (
     <S.NavbarDiv>
-      <S.ButtonsNav>
+      <S.LogoNav>
         <S.LogoText>SIER.co</S.LogoText>
-      </S.ButtonsNav>
+      </S.LogoNav>
 
       <S.ButtonsNav2>
         {level === 0 ? (

@@ -13,26 +13,72 @@ const FadeAnimation2 = keyframes`
 
 `;
 
+const mobile: string = "768px";
+const desktop: string = "1024px";
+const tablet: string = "825px";
 
 export const NavbarDiv = styled.div`
   ${({ theme }) => css`
-    padding: 0;
-    margin: 0 0 2rem 0;
-    width: 100%;
-    height: fit-content;
-    display: flex;
     background: ${theme.colors.baseBg1};
+    // Mobile X Tablet
+    @media (min-width: 0) and (max-width: ${tablet}) {
+    }
+    // Tablet
+    @media (min-width: ${mobile}) {
+
+    }
+    // Desktop
+    @media (min-width: ${tablet}) {
+      padding: 0;
+      margin: 0 0 2rem 0;
+      width: 100%;
+      height: fit-content;
+      display: flex;
+    }
   `}
 `;
 
 export const LogoText = styled.h1`
   ${({ theme }) => css`
     margin: 0;
-    font-size: 2.5rem;
-    width: fit-content;
     color: ${theme.colors.logoColor};
-    padding: 1rem 0 1rem 5rem;
+    // Mobile X Tablet
+    @media (min-width: 0) and (max-width: ${tablet}) {
+      width: 100%;
+      font-size: 2rem;
+      text-align: center;
+      padding: 1rem 0 1rem 0;
+    }
+    // Tablet
+    @media (min-width: ${mobile}) {
+
+    }
+    // Desktop
+    @media (min-width: ${tablet}) {
+      font-size: 2.5rem;
+      width: fit-content;
+      background: red;
+      padding: 1rem 0 1rem 5rem;
+    }
   `}
+`;
+
+export const LogoNav = styled.div`
+  // Mobile X Tablet
+  @media (min-width: 0) and (max-width: ${tablet}) {
+    padding: 0;
+  }
+  // Tablet
+  @media (min-width: ${mobile}) {
+  }
+  // Desktop
+  @media (min-width: ${tablet}) {
+    width: 100%;
+    padding: 0 5rem 0 0;
+    float: right;
+    text-align: right;
+    background: red;
+  }
 `;
 
 export const ButtonsNav = styled.div`
@@ -43,22 +89,44 @@ export const ButtonsNav = styled.div`
 `;
 
 export const ButtonsNav2 = styled.div`
-  width: 50%;
-  display: flex;
-  font-weight: 400;
-  text-align: center;
-  padding: 2.5rem 3rem 0 2rem;
+  // Mobile X Tablet
+  @media (min-width: 0) and (max-width: ${tablet}) {
+    display: none;
+  }
+  // Tablet
+  @media (min-width: ${mobile}) {
+    display: none;
+  }
+  // Desktop
+  @media (min-width: ${tablet}) {
+    width: 50%;
+    display: flex;
+    font-weight: 400;
+    text-align: center;
+    padding: 2.5rem 3rem 0 2rem;
+  }
 `;
 
 export const CreateBtn = styled.div`
   ${({ theme }) => css`
-    margin: 2.5rem 0 0 2rem;
-    color: white;
-    font-size: 1rem;
-    display: flex;
-    float: right;
-    cursor: pointer;
-    transition: 0.3s;
+    // Mobile X Tablet
+    @media (min-width: 0) and (max-width: ${tablet}) {
+      display: none;
+    }
+    // Tablet
+    @media (min-width: ${mobile}) {
+      display: none;
+    }
+    // Desktop
+    @media (min-width: ${tablet}) {
+      margin: 2.5rem 0 0 2rem;
+      color: white;
+      font-size: 1rem;
+      display: flex;
+      float: right;
+      cursor: pointer;
+      transition: 0.3s;
+    }
   `}
 `;
 
@@ -117,62 +185,67 @@ export const Icon2 = styled(Icon)``;
 
 export const OptionsContainer = styled.div`
   ${({ theme }) => css`
-    width: 200px;
-    height:fit-content;
-    position: absolute;
-    right: 4rem;
-    top: 5.1rem;
-    padding:0 1rem 1rem 1rem;
-    color:black;
-    background: ${theme.colors.baseBg2};
-    opacity: ${(props) => props.theme.opacity || "0" };
-    top: ${(props) => props.theme.top || "35px" };
-    visibility: ${(props) => props.theme.visibility || "hidden"};
-    z-index: 1;
-    -webkit-transition: all .5s ease;
-       -moz-transition: all .5s ease;
-        -ms-transition: all .5s ease;
-         -o-transition: all .5s ease;
-            transition: all .5s ease;
+    // Mobile
+    @media (min-width: 0) and (max-width: ${mobile}) {
+      display: none;
+    }
+    // Tablet
+    @media (max-width: ${tablet}) {
+      display: none;
+    }
+    // Desktop
+    @media (min-width: ${tablet}) {
+      width: 200px;
+      height: fit-content;
+      position: absolute;
+      right: 4rem;
+      top: 5.1rem;
+      padding: 0 1rem 1rem 1rem;
+      color: black;
+      background: ${theme.colors.baseBg2};
+      opacity: ${(props) => props.theme.opacity || "0"};
+      top: ${(props) => props.theme.top || "35px"};
+      visibility: ${(props) => props.theme.visibility || "hidden"};
+      z-index: 1;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
   `};
 `;
 
 export const Line = styled.div`
-${({ theme }) => css` 
-width:100%;
-margin:0 auto;
-height:1px;
-background: ${theme.colors.baseBg3};
-`}
+  ${({ theme }) => css`
+    width: 100%;
+    margin: 0 auto;
+    height: 1px;
+    background: ${theme.colors.baseBg3};
+  `}
 `;
 
 export const List = styled.div`
-${({ theme }) => css` 
-width:100%;
-height:fit-content;
-text-align:right;
-color: ${theme.colors.white} ;
-padding: 1rem 0 1rem 0;
-margin-right:1rem;
-`};
+  ${({ theme }) => css`
+    width: 100%;
+    height: fit-content;
+    text-align: right;
+    color: ${theme.colors.white};
+    padding: 1rem 0 1rem 0;
+    margin-right: 1rem;
+  `};
 `;
-
 
 export const Button = styled.button`
-${({ theme }) => css`   font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border-radius: 3px;
-  display: ${(props) => props.theme.display || "none"};
-  background: ${(props) => props.theme.background || theme.colors.logoColor};
-  /* Color the border and text with theme.main */
-  color: ${(props) => props.theme.color || "red"};
-  border: 2px solid ${(props) => props.theme.border || "red"};`}
-
+  ${({ theme }) => css`
+    font-size: 1em;
+    margin: 1em;
+    padding: 0.25em 1em;
+    border-radius: 3px;
+    display: ${(props) => props.theme.display || "none"};
+    background: ${(props) => props.theme.background || theme.colors.logoColor};
+    /* Color the border and text with theme.main */
+    color: ${(props) => props.theme.color || "red"};
+    border: 2px solid ${(props) => props.theme.border || "red"};
+  `}
 `;
-
-
-
-
-
-
