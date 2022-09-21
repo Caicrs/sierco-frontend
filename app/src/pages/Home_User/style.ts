@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+const mobile: string = "768px";
+const desktop: string = "1024px";
+const tablet: string = "825px";
+
 export const Container = styled.section`
   ${({ theme }) => css`
     background-color: ${theme.colors.baseBg1};
@@ -9,12 +13,25 @@ export const Container = styled.section`
 
 export const Topic = styled.div`
   ${({ theme }) => css`
-    width: 88.5%;
-    padding: 1.5rem 0 0 0;
     margin: 0 auto;
+    width: 88.5%;
     color: ${theme.colors.textColor};
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
+     // Mobile 
+ @media (min-width: 0) and (max-width: ${tablet}) {
+padding: 0 0 1.25rem 0 ;
+}
+  // Tablet
+  @media (min-width: ${mobile}) {
+  width: fit-content;
+  margin:0 0 0 4rem;
+}
+    // Desktop
+    @media (min-width: ${tablet}) {
+    padding: 1.5rem 0 0 0;
+    font-size: 1.5rem;
+    }
   `}
 `;
 
@@ -23,13 +40,6 @@ export const HorizontalList = styled.div`
     width: 88.5%;
     height: 299px;
     margin: 2rem auto;
-    /*
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 25px;
-    grid-row-gap: 0px;
-    */
   `}
 `;
 

@@ -66,9 +66,9 @@ const Navbar2 = () => {
         </S.CreateBtn>
         <ThemeProvider theme={arrow === 0 ? OptionHidden : OptionVisible}>
           <S.OptionsContainer>
-            <S.List>Trocar Perfil</S.List>
+            <S.List><S.ListLink to="/profile">Trocar Perfil</S.ListLink></S.List>
             <S.Line></S.Line>
-            <S.List>Sair</S.List>
+            <S.List><S.ListLink to="/exit">Sair</S.ListLink></S.List>
             <S.Line></S.Line>
           </S.OptionsContainer>
         </ThemeProvider>

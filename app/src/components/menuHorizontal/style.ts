@@ -6,7 +6,7 @@ const desktop: string = "1024px";
 const tablet: string = "825px";
 
 export const Container = styled.div`
-
+padding:0 0 2rem 0;
  // Mobile X Tablet
  @media (min-width: 0) and (max-width: ${tablet}) {
     width: 95%;
