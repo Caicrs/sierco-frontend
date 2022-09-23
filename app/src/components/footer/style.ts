@@ -1,24 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  padding: 80px 60px;
-  background: radial-gradient(
-    circle,
-    rgba(92, 39, 251, 1) 0%,
-    rgba(112, 71, 247, 1) 100%
-  );
-  @media (max-width: 600px) {
-    padding: 70px 30px;
-  }
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 100%;
-  margin: 2rem 0 0 0;
+  width: 100vw;
+  padding: 2rem 0 0 0;
   background: #424141;
+  backdrop-filter: blur(0px);
 `;
 
 export const Column = styled.div`
