@@ -3,10 +3,16 @@ import arrowdown from "./img/arrow-down.svg";
 import arrowup from "./img/arrow-up.svg";
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
+import { setConstantValue } from "typescript";
 
-const Navbar2 = () => {
-  const name = "Admin";
-  const [level, setLevel] = useState(0);
+interface ButtonProps {
+  username:  string;
+  changeState: (params: any) => any;
+  page: number;
+}
+
+const Navbar2 = ({username,changeState,page}: ButtonProps) => {
+
   const [arrow, setArrow] = useState(0);
 
   let OptionVisible = {
@@ -21,12 +27,20 @@ const Navbar2 = () => {
     top: "4rem",
   };
 
+
   function Change() {
     if (arrow === 0) {
       setArrow(1);
     } else {
       setArrow(0);
     }
+  }
+
+  function HomeState (){
+    changeState(0)
+  }
+  function Dashboard (){
+    changeState(1)
   }
 
   return (
@@ -36,18 +50,18 @@ const Navbar2 = () => {
       </S.LogoNav>
 
       <S.ButtonsNav2>
-        {level === 0 ? (
+        {page === 0 ? (
           <S.CreateBtnCenter>Home</S.CreateBtnCenter>
         ) : (
-          <S.CreateBtnCenterOpacity onClick={() => setLevel(0)}>
+          <S.CreateBtnCenterOpacity onClick={HomeState}>
             Home
           </S.CreateBtnCenterOpacity>
         )}
         <S.Bar2>|</S.Bar2>
-        {level === 0 ? (
+        {page === 0 ? (
           <S.CreateBtnCenterOpacity
             className="active"
-            onClick={() => setLevel(1)}
+            onClick={Dashboard}
           >
             Dashboard
           </S.CreateBtnCenterOpacity>
@@ -55,9 +69,10 @@ const Navbar2 = () => {
           <S.CreateBtnCenter>Dashboard</S.CreateBtnCenter>
         )}
       </S.ButtonsNav2>
+     
       <S.ButtonsNav>
         <S.CreateBtn>
-          Olá, {name}{" "}
+          Olá, {username}{" "}
           {arrow === 0 ? (
             <S.Icon onClick={() => Change()} src={arrowdown}></S.Icon>
           ) : (
