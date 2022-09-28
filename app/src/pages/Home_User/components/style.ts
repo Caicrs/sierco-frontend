@@ -85,8 +85,9 @@ export const Title = styled.div`
   }
   // Desktop
   @media (min-width: ${tablet}) {
-    padding: 0.5rem 1.25rem 0 1.25rem;
-    height: 50px;
+  box-sizing: border-box;
+  height: 50px;
+  padding: 0rem 1.25rem 0 1.25rem;
   }
 `;
 

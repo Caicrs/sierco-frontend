@@ -22,7 +22,7 @@ function MainCarousel() {
         {data.map((i) => (
             <S.Card key={i}>
               <S.Image draggable={false} src="https://cdn.clickwallpapers.net/images/clickwallpapers-game-resident-evil-4-classic-1920x1080-img7.jpg"></S.Image>
-              <S.Title>#{i}| Resident Evil 4 REMAKE EDITION </S.Title>
+              <S.Title>#{i}| Resident Evil 4 REMAKE EDITION</S.Title>
               <S.SubTitleContainer>
                 <S.SubTitle>Terror / Aventura</S.SubTitle>
                 <S.Year>2010</S.Year>
