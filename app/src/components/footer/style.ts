@@ -4,9 +4,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   padding: 2rem 0 0 0;
-  background: #424141;
+  background:  #424141;
   backdrop-filter: blur(0px);
 `;
 
