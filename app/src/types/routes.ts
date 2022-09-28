@@ -3,4 +3,5 @@ export enum RoutePath {
     HOME_USER = '/homepage',
     LOGIN = '/login',
     REGISTER = '/register',
+    DASHBOARD = '/dashboard',
   }

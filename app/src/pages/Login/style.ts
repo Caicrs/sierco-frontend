@@ -8,7 +8,7 @@ const tablet: string = "825px";
 export const Global = styled.div`
 width:100%;
 height:fit-content;
-`
+`;
 
 export const Container = styled.div`
   ${({ theme }) => css`
