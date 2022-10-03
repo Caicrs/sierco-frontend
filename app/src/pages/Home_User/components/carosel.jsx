@@ -12,20 +12,24 @@ const breakPoints = [
   { width: 1200, itemsToShow: 5 },
 ];
 
-const data = [1, 2, 3, 4, 5, 6, 7, 8];
-
-function MainCarousel() {
+function MainCarousel({ ...props }) {
   return (
     <>
       <S.ContainerCarousel>
-        <Carousel className="container" outerSpacing={-10}  transitionMs={300} showArrows={false} breakPoints={breakPoints}>
-        {data.map((i) => (
-            <S.Card key={i}>
-              <S.Image draggable={false} src="https://cdn.clickwallpapers.net/images/clickwallpapers-game-resident-evil-4-classic-1920x1080-img7.jpg"></S.Image>
-              <S.Title>#{i}| Resident Evil 4 REMAKE EDITION</S.Title>
+        <Carousel
+          className="container"
+          outerSpacing={-10}
+          transitionMs={300}
+          showArrows={false}
+          breakPoints={breakPoints}
+        >
+          {props.gamesProps.map((game) => (
+            <S.Card key={game.id}>
+              <S.Image draggable={false} src={game.CoverImageUrl}></S.Image>
+              <S.Title>{game.Title}</S.Title>
               <S.SubTitleContainer>
                 <S.SubTitle>Terror / Aventura</S.SubTitle>
-                <S.Year>2010</S.Year>
+                <S.Year>{game.Year}</S.Year>
               </S.SubTitleContainer>
               <S.Stars>
                 <S.StarIcon src={starIcon} />
