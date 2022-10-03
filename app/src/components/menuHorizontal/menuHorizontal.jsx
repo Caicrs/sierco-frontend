@@ -33,7 +33,6 @@ function MenuHorizontal() {
   let OptionHidden = {
     opacity: 0.25 ,
   };
-console.log(state)
   return (
     <S.Container>
       
