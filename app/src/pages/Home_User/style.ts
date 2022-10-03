@@ -11,6 +11,8 @@ export const Container = styled.section`
   `}
 `;
 
+export const H5 = styled.h5``;
+
 export const Topic = styled.div`
   ${({ theme }) => css`
     margin: 0 auto;

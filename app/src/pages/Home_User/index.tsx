@@ -2,7 +2,7 @@ import * as S from "./style";
 import Navbar2 from "components/navbar2/Navbar";
 import Footer from "components/footer/footer";
 import MenuHorizontal from "components/menuHorizontal/menuHorizontal";
-import MainPage from "./components/mainPage";
+import GameList  from "./components/GameList ";
 import { useState } from "react";
 import Dashboard from "pages/Dashboard";
 
@@ -16,7 +16,7 @@ and " currentState" its a variable for catch the value changed on the functions 
     <S.Container>
       <Navbar2 username={"userName"} changeState={currentState => setState(currentState)} page={state}/>
       <MenuHorizontal />
-      {state === 0 ? (<MainPage/>) : <Dashboard/>}
+      {state === 0 ? (<GameList/>) : <Dashboard/>}
       <Footer></Footer>
     </S.Container>
   );

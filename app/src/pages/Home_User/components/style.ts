@@ -67,7 +67,7 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.div`
-  font-weight: 400;
+  font-weight: 600;
   margin: 0;
   // Mobile
   @media (min-width: 0) and (max-width: ${tablet}) {
@@ -86,8 +86,8 @@ export const Title = styled.div`
   // Desktop
   @media (min-width: ${tablet}) {
   box-sizing: border-box;
-  height: 50px;
-  padding: 0rem 1.25rem 0 1.25rem;
+  font-size: 0.85rem;
+  padding: 0.25rem 1.25rem 0 1.25rem;
   }
 `;
 
