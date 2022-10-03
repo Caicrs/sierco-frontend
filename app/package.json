@@ -5,7 +5,7 @@
   "dependencies": {
     "@chevrotain/utils": "^10.3.0",
     "@react-three/drei": "^9.23.1",
-    "@react-three/fiber": "^8.4.1",
+    "@react-three/fiber": "^8.8.7",
     "@sefailyasoz/react-carousel": "^1.1.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
