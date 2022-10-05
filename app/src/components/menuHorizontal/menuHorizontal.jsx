@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import Carousel, { consts } from "react-elastic-carousel";
 import * as S from "./style";
 import "./styles.css";
@@ -7,7 +7,7 @@ import rightArrow from "./img/arrow/rightArrow.svg";
 import { ThemeProvider } from "styled-components";
 import { motion } from "framer-motion";
 
-function MenuHorizontal() {
+function MenuHorizontal({ option, menuState }) {
   function myArrow({ type, onClick, isEdge }) {
     const pointer =
       type === consts.PREV ? (
@@ -24,35 +24,71 @@ function MenuHorizontal() {
 
   const [state, dispatch] = useState("Home");
 
+  function Change(response) {
+    switch (response) {
+      case "Home":
+        return menuState("Home");
+      case "Profiles":
+        return menuState("Profiles");
+      case "Games":
+        return menuState("Games");
+      case "Genres":
+        return menuState("Genres");
+        case "Users":
+        return menuState("Users");
+        case "Exit":
+        return menuState("Exit");
+      default:
+        return "Home";
+    }
+    if (response === "Home") {
+      dispatch("Home");
+      menuState("Home");
+      alert(state);
+    }
+  }
 
   let OptionVisible = {
-    opacity: 1 ,
-
+    opacity: 1,
   };
 
   let OptionHidden = {
-    opacity: 0.25 ,
+    opacity: 0.25,
   };
+
   return (
     <S.Container>
-      
       <Carousel
         renderArrow={myArrow}
         className="carousel"
         transitionMs={300}
         itemsToShow={2}
       >
-        <ThemeProvider theme={state === "Home" ? OptionVisible : OptionHidden}>
-          <S.MenuText onClick={() => dispatch("Home")}>Home</S.MenuText>  
+        <ThemeProvider theme={option === "Home" ? OptionVisible : OptionHidden}>
+          <S.MenuText onClick={() => Change("Home")}>Home</S.MenuText>
         </ThemeProvider>
-        <ThemeProvider theme={state === "Dashboard" ? OptionVisible : OptionHidden}>
-          <S.MenuText onClick={() => dispatch("Dashboard")}>Dashboard</S.MenuText>
+        <ThemeProvider
+          theme={option === "Profiles" ? OptionVisible : OptionHidden}
+        >
+          <S.MenuText onClick={() => Change("Profiles")}>Profiles</S.MenuText>
         </ThemeProvider>
-        <ThemeProvider theme={state === "Favoritos" ? OptionVisible : OptionHidden}>
-          <S.MenuText onClick={() => dispatch("Favoritos")}>Favoritos</S.MenuText>
+        <ThemeProvider
+          theme={option === "Genres" ? OptionVisible : OptionHidden}
+        >
+          <S.MenuText onClick={() => Change("Genres")}>Genres</S.MenuText>
         </ThemeProvider>
-        <ThemeProvider theme={state === "Sair" ? OptionVisible : OptionHidden}>
-          <S.MenuText onClick={() => dispatch("Sair")}>Sair</S.MenuText>
+        <ThemeProvider
+          theme={option === "Games" ? OptionVisible : OptionHidden}
+        >
+          <S.MenuText onClick={() => Change("Games")}>Games</S.MenuText>
+        </ThemeProvider>
+         <ThemeProvider
+          theme={option === "Users" ? OptionVisible : OptionHidden}
+        >
+          <S.MenuText onClick={() => Change("Users")}>Users</S.MenuText>
+        </ThemeProvider>
+        <ThemeProvider theme={option === "Exit" ? OptionVisible : OptionHidden}>
+          <S.MenuText onClick={() => Change("Exit")}>Log out</S.MenuText>
         </ThemeProvider>
       </Carousel>
     </S.Container>
