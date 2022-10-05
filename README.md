@@ -14,3 +14,11 @@ Install sierco-frontend with npm
   cd sierco-frontend
 ```
     
+## Screens and routes
+
+- Homepage (user not logged) = "/"
+- Homepage (user logged) = "/homepage"
+- Login = "/login"
+- Register = "/Register"
+- GamesAdmin ( Crud page for admin users ) = "games"
+
