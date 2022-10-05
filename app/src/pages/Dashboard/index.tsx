@@ -41,18 +41,18 @@ const Dashboard = () => {
     <S.Container>
       <Div>
         <Div3>
-          <Div4 className="builder-columns">
-            <Column className="builder-column">
-              <Text onClick={() => ThisOption("Usuario")}>Usuários</Text>
+          <Div4 >
+            <Column >
+              <Text onClick={() => ThisOption("user")}>Usuários</Text>
             </Column>
-            <Column className="builder-column">
-              <Text onClick={() => ThisOption("Perfis")}>Perfis</Text>
+            <Column>
+              <Text onClick={() => ThisOption("profile")}>Perfis</Text>
             </Column>
-            <Column className="builder-column">
-              <Text onClick={() => ThisOption("Jogos")}>Jogos</Text>
+            <Column >
+              <Text onClick={() => ThisOption("game")}>Games</Text>
             </Column>
-            <Column className="builder-column">
-              <Text onClick={() => ThisOption("Generos")}>Gêneros</Text>
+            <Column >
+              <Text onClick={() => ThisOption("genre")}>Gêneros</Text>
             </Column>
           </Div4>
         </Div3>
@@ -60,13 +60,13 @@ const Dashboard = () => {
 
       {(() => {
         switch (option) {
-          case "Usuario":
+          case "user":
             return <OptionSpace name={option} data={data} />;
-          case "Perfis":
+          case "profile":
             return <OptionSpace name={option} data={profilesdata} />;
-          case "Jogos":
+          case "game":
             return <OptionSpace name={option} data={gamedata} />;
-          case "Generos":
+          case "genre":
             return <OptionSpace name={option} data={genredata} />;
           default:
             return null;
@@ -88,13 +88,12 @@ const Div = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 50px 5rem 50px 1rem;
-  background-color: rgba(61, 61, 61, 1);
   @media (max-width: 999px) {
-    padding: 50px 2rem 50px 2rem;
-    display: none;
+    padding: 0 2rem 1rem 2rem;
+    display:none;
     background: red;
   }
-  // Tablet
+  // DESKTOP
   @media (min-width: ${mobile}) {
     padding: 50px 5rem 50px 5rem;
   }
@@ -115,7 +114,7 @@ const Div3 = styled.div`
   max-width: 100%;
   align-self: stretch;
   width: 100vw;
-  margin-top: 50px;
+
 `;
 
 const Div4 = styled.div`
@@ -141,7 +140,7 @@ const Column = styled.div`
 const Text = styled.div`
   ${({ theme }) => css`
     display: flex;
-    background-color: ${theme.colors.baseBg1};
+    background-color: ${theme.colors.baseBg2};
     flex-direction: column;
     position: relative;
     margin-top: 20px;
