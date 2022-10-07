@@ -117,11 +117,19 @@ export const FormBox = styled.div`
     background: transparent;
     // Mobile
     @media screen and (min-width: 0) and (max-width: ${mobile}) {
+      padding: 1rem 0 1% 0;
+      height: 100vh;
+      
     }
     // Tablet
     @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-      width: 100%;
+      width: 65%;
       height: fit-content;
+      background-color: ${theme.colors.baseBg3};
+      border-radius: 1rem;
+      padding-bottom: 0.1rem;;
+      margin:0 auto;
+    backdrop-filter: blur(5px);
     }
     // Desktop
     @media screen and (min-width: ${tablet}) {
@@ -142,12 +150,15 @@ export const InputGroup = styled.div`
     // Mobile
     @media screen and (min-width: 0) and (max-width: ${mobile}) {
       width: 80%;
-      margin: 8rem auto;
+      height:425px;
+      overflow-x: scroll;
+      margin:20% auto 2rem auto;
     }
     // Tablet
     @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-      width: 80%;
+      padding: 3rem 0 0 0;
       margin: 25% auto 0 auto;
+     
     }
     // Desktop
     @media screen and (min-width: ${tablet}) {
@@ -243,11 +254,13 @@ export const Btn_Entrar = styled.div`
     }
     // Mobile
     @media screen and (min-width: 0) and (max-width: ${mobile}) {
-      width: 50%;
+      width: 80%;
+      margin: 0 auto ;
     }
     // Tablet
     @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-      width: 50%;
+      width: 70%;
+      margin: 3rem auto 3rem auto;
     }
     // Desktop
     @media screen and (min-width: ${tablet}) {

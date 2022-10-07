@@ -9,5 +9,13 @@ export const Container = styled.section`
   height:100vh ;
     background-color: ${theme.colors.baseBg1};
     color: ${theme.colors.textColor};
+    // Mobile
+    @media screen and (min-width: 0) and (max-width: ${mobile}) {
+      height: 100% ;
+    }
+    // Tablet
+    @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
+      height:  100%;
+    }
   `}
 `;

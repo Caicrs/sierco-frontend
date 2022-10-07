@@ -43,16 +43,16 @@ const Dashboard = () => {
         <Div3>
           <Div4 >
             <Column >
-              <Text onClick={() => ThisOption("user")}>Usuários</Text>
+              <Text onClick={() => ThisOption("Users")}>Usuários</Text>
             </Column>
             <Column>
-              <Text onClick={() => ThisOption("profile")}>Perfis</Text>
+              <Text onClick={() => ThisOption("Profiles")}>Perfis</Text>
             </Column>
             <Column >
-              <Text onClick={() => ThisOption("game")}>Games</Text>
+              <Text onClick={() => ThisOption("Games")}>Games</Text>
             </Column>
             <Column >
-              <Text onClick={() => ThisOption("genre")}>Gêneros</Text>
+              <Text onClick={() => ThisOption("Genres")}>Gêneros</Text>
             </Column>
           </Div4>
         </Div3>
@@ -60,13 +60,13 @@ const Dashboard = () => {
 
       {(() => {
         switch (option) {
-          case "user":
+          case "Users":
             return <OptionSpace name={option} data={data} />;
-          case "profile":
+          case "Profiles":
             return <OptionSpace name={option} data={profilesdata} />;
-          case "game":
+          case "Games":
             return <OptionSpace name={option} data={gamedata} />;
-          case "genre":
+          case "Genres":
             return <OptionSpace name={option} data={genredata} />;
           default:
             return null;

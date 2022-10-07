@@ -29,7 +29,7 @@ const Form = ({ name, set, changeState }: ButtonProps) => {
   };
 
   switch (name) {
-    case "user":
+    case "Users":
       return (
         <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
           <Container>
@@ -40,7 +40,7 @@ const Form = ({ name, set, changeState }: ButtonProps) => {
           </Container>
         </ThemeProvider>
       );
-    case "game":
+    case "Games":
       return (
         <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
           <Container>
@@ -51,7 +51,7 @@ const Form = ({ name, set, changeState }: ButtonProps) => {
           </Container>
         </ThemeProvider>
       );
-    case "profile":
+    case "Profiles":
       return (
         <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
           <Container>
@@ -62,7 +62,7 @@ const Form = ({ name, set, changeState }: ButtonProps) => {
           </Container>
         </ThemeProvider>
       );
-    case "genre":
+    case "Genres":
       return (
         <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
           <Container>
@@ -123,12 +123,15 @@ const ExitBtn = styled.h3`
     position: absolute;
     height: fit-content;
     transition: 0.3s;
-    box-sizing: border-box;
     width: fit-content;
     color: ${theme.colors.logoColor};
     cursor: pointer;
     &:hover {
       opacity: 0.5;
+    }
+    // Mobile
+    @media screen and (min-width: 0) and (max-width: ${mobile}) {
+      right: 2rem;
     }
   `}
 `;

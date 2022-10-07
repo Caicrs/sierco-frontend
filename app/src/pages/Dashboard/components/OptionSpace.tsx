@@ -5,7 +5,6 @@ import edit from "../img/edit.svg";
 import trash from "../img/trash.svg";
 import Form from "./Form";
 
-
 const OptionSpace = ({ ...props }) => {
   const [state, setState] = useState("");
 
@@ -16,7 +15,6 @@ const OptionSpace = ({ ...props }) => {
 
   return (
     <>
-
       <Form
         changeState={(currentState) => setState(currentState)}
         name={props.name}
@@ -25,10 +23,12 @@ const OptionSpace = ({ ...props }) => {
 
       <Div>
         <Div3>
-          <Div2>{props.name}</Div2>
-          <AddBtn>
-            <Btn onClick={() => Test("show")}>+</Btn>
-          </AddBtn>
+          <Title>
+            <Div2>{props.name}</Div2>
+            <AddBtn>
+              <Btn onClick={() => Test("show")}>+</Btn>
+            </AddBtn>
+          </Title>
         </Div3>
         <Div4>
           {props.data.map((item: any) => (
@@ -64,37 +64,46 @@ const Icon = styled.img`
   }
 `;
 
-const AddBtn = styled.div`
+const Title = styled.div`
   width: 100%;
-  text-align: right;
-  font-size: 2rem;
-  font-weight: 600;
+  display: flex;
+  padding: 0 0 1.5rem 0;
 `;
 
-const Btn = styled.div`
+const AddBtn = styled.div`
+  ${({ theme }) => css`
+    height: fit-content;
+    padding: 0;
+    font-weight: 600;
+    color: ${theme.colors.logoColor};
+  `}
+`;
+
+const Btn = styled.button`
   ${({ theme }) => css`
     width: fit-content;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 2rem;
     color: ${theme.colors.logoColor};
-    transition: 0.3s;
-    float: right;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.5;
+    // Desktop
+    @media (min-width: ${tablet}) {
+      cursor: pointer;
+      &:hover {
+        opacity: 0.5;
+      }
     }
   `}
 `;
 
 const Div = styled.div`
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   transition: 0.3s;
   padding: 0 0rem 50px 0;
   @media (max-width: 999px) {
     padding: 0 2rem 50px 2rem;
-    background-color: red;
-   
   }
   // Tablet
   @media (min-width: ${mobile}) {
@@ -103,6 +112,7 @@ const Div = styled.div`
 `;
 
 const Div2 = styled.div`
+  width: 100%;
   color: rgba(255, 255, 255, 1);
   font-size: 24px;
   padding: 0.3rem 0 0 0;
@@ -114,9 +124,8 @@ const Div3 = styled.div`
   box-sizing: border-box;
   width: 100%;
   padding: 0 3rem 1rem 3rem;
-    @media (max-width: 999px) {
-      padding: 0 ;
-   
+  @media (max-width: 999px) {
+    padding: 0;
   }
 `;
 
@@ -127,6 +136,8 @@ const Div4 = styled.div`
   @media (max-width: 999px) {
     display: block;
     padding: 0;
+    height: 400px;
+    overflow-x: scroll;
   }
 `;
 
