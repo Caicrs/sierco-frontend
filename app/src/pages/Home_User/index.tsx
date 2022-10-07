@@ -5,7 +5,13 @@ import MenuHorizontal from "components/menuHorizontal/menuHorizontal";
 import GameList from "./components/GameList ";
 import { SetStateAction, useState } from "react";
 import Dashboard from "pages/Dashboard";
+import ProfileForm from "pages/Dashboard/components/formTypes/profile";
+import UserForm from "pages/Dashboard/components/formTypes/users";
+import GameForm from "pages/Dashboard/components/formTypes/games";
+import GenreForm from "pages/Dashboard/components/formTypes/genres";
+import MobileDashboard from "pages/Dashboard/components/formTypes/mobileDashboard/mobileDashboard";
 import { useMediaQuery } from "react-responsive";
+
 
 const HomeUser = () => {
   // "state" for change between home and dashboard when click the button on navbar.
@@ -21,26 +27,58 @@ and " currentState" its a variable for catch the value changed on the functions 
   const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
-  return (
-    <S.Container>
-      <Navbar2
-        username={"userName"}
-        changeState={(currentState) => setState(currentState)}
-        page={state}
-      />
-      <MenuHorizontal
-        menuState={(optionState: SetStateAction<string>) =>
-          setOption(optionState)
-        }
-        option={option}
-      />
+  if (isTabletOrMobile) {
+    return (
+      <S.Container>
+        <Navbar2
+          username={"userName"}
+          changeState={(currentState) => setState(currentState)}
+          page={state}
+        />
+        <MenuHorizontal
+          menuState={(optionState: SetStateAction<string>) =>
+            setOption(optionState)
+          }
+          option={option}
+        />
 
-        {isDesktopOrLaptop && state === 0 ? <GameList /> : <Dashboard />} 
-        {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
+        {(() => {
+          switch (option) {
+            case "Home":
+              return <GameList /> 
+            case "Profiles":
+              return <MobileDashboard myOption={option} />;
+            case "Games":
+              return <MobileDashboard myOption={option} />;
+            case "Genres":
+              return <MobileDashboard myOption={option} />;
+            case "Users":
+              return <MobileDashboard myOption={option} />;
+            case "Exit":
+              return <h2>log out</h2>;
+            default:
+              return null;
+          }
+        })()}
 
-      <Footer></Footer>
-    </S.Container>
-  );
+        <Footer></Footer>
+      </S.Container>
+    );
+  } else {
+    return (
+      <S.Container>
+        <Navbar2
+          username={"userName"}
+          changeState={(currentState) => setState(currentState)}
+          page={state}
+        />
+
+        {isDesktopOrLaptop && state === 0 ? <GameList /> : <Dashboard />}
+
+        <Footer></Footer>
+      </S.Container>
+    );
+  }
 };
 
 export default HomeUser;
