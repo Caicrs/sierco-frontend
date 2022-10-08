@@ -5,8 +5,11 @@ import edit from "../img/edit.svg";
 import trash from "../img/trash.svg";
 import Form from "./Form";
 
+
+
 const OptionSpace = ({ ...props }) => {
   const [state, setState] = useState("");
+
 
   function Test(set: string) {
     setState(set);
@@ -32,7 +35,7 @@ const OptionSpace = ({ ...props }) => {
         </Div3>
         <Div4>
           {props.data.map((item: any) => (
-            <Column>
+            <Column key={item.Id}>
               <Text>{item.Nome}</Text>
               <Icon src={edit}></Icon>
               <Icon src={trash}></Icon>

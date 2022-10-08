@@ -1,8 +1,9 @@
 import * as S from "../../../style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import OptionSpace from "../../OptionSpace";
 import { Link } from "react-router-dom";
+import {Genrers,GenrerType} from "services/ServiceGenre"
 
 interface Mobile {
     myOption:string;
@@ -10,6 +11,24 @@ interface Mobile {
 
 const MobileDashboard = ({myOption}:Mobile) => {
   const [option, setOption] = useState("");
+  
+  const [genre, setGenre] = useState<GenrerType[]>([
+    {
+      id:"",
+      Name:""
+    }
+  ])
+
+  useEffect(() => {
+    GenresRender()
+  }, []);
+
+  const GenresRender = async () => {
+    const res = await Genrers.AllGenres();
+    setGenre(res?.data);
+  };
+
+
   const ThisOption = (state: string) => {
     setOption(state);
   };
@@ -34,13 +53,6 @@ const MobileDashboard = ({myOption}:Mobile) => {
     { Nome: "todos os jogos da api" },
   ];
 
-  const genredata = [
-    { Nome: "todos generos da api" },
-    { Nome: "Guilherme Vieira" },
-    { Nome: "Fernando de Souza" },
-    { Nome: "Armando santos" },
-    { Nome: "Pierre Vigacci" },
-  ];
   return (
     <S.Container>
 
@@ -53,7 +65,7 @@ const MobileDashboard = ({myOption}:Mobile) => {
           case "Games":
             return <OptionSpace name={myOption} data={gamedata} />;
           case "Genres":
-            return <OptionSpace name={myOption} data={genredata} />;
+            return <OptionSpace name={myOption} data={gamedata} />;
           default:
             return null;
         }

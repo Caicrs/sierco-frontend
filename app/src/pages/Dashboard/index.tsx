@@ -1,13 +1,30 @@
 import * as S from "./style";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styled, { css } from "styled-components";
 import OptionSpace from "./components/OptionSpace";
 import { Link } from "react-router-dom";
+import {Genrers,GenrerType} from "services/ServiceGenre"
 
 const Dashboard = () => {
   const [option, setOption] = useState("");
   const ThisOption = (state: string) => {
     setOption(state);
+  };
+
+  const [genre, setGenre] = useState<GenrerType[]>([
+    {
+      id:"",
+      Name:""
+    }
+  ])
+
+  useEffect(() => {
+    GenresRender()
+  }, []);
+
+  const GenresRender = async () => {
+    const res = await Genrers.AllGenres();
+    setGenre(res?.data);
   };
 
   const data = [
@@ -37,6 +54,7 @@ const Dashboard = () => {
     { Nome: "Armando santos" },
     { Nome: "Pierre Vigacci" },
   ];
+
   return (
     <S.Container>
       <Div>
