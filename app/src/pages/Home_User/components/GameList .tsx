@@ -1,29 +1,31 @@
 import * as S from "../style";
 import { useEffect, useState, useCallback } from "react";
 import MainCarousel from "./carosel";
-import api from "../../../api/gamestock";
+import {AllGames,useGame} from "../../../services/ServiceGames"
 
 const GameList = () => {
-  const [games, setGames] = useState([]);
+  const [games, setGames] = useState<useGame[]>([
+    {
+      id: "",
+      Title: "",
+      CoverImageUrl: "",
+      Description: "",
+      Year: 0,
+      ImdbScore: 0,
+      TrailerYoutubeUrl: "",
+      GameplayYoutubeUrl: "",
+    },
+  ]);
 
-  useEffect(() => {
-    const fetchGames = async () => {
-      api
-        .get("/games")
-        .then(function (response) {
-          // handle success
-          setGames(response.data)
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .then(function () {
-          // always executed
-        });
-    };
-    fetchGames();
+    useEffect(() => {
+    GamesRender()
   }, []);
+
+  const GamesRender = async () => {
+    const res = await AllGames.GamesAll();
+    setGames(res?.data);
+  };
+
 
   return (
     <>

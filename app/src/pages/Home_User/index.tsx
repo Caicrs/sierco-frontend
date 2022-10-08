@@ -12,7 +12,6 @@ import GenreForm from "pages/Dashboard/components/formTypes/genres";
 import MobileDashboard from "pages/Dashboard/components/formTypes/mobileDashboard/mobileDashboard";
 import { useMediaQuery } from "react-responsive";
 
-
 const HomeUser = () => {
   // "state" for change between home and dashboard when click the button on navbar.
   const [state, setState] = useState(0);
@@ -45,7 +44,7 @@ and " currentState" its a variable for catch the value changed on the functions 
         {(() => {
           switch (option) {
             case "Home":
-              return <GameList /> 
+              return <GameList />;
             case "Profiles":
               return <MobileDashboard myOption={option} />;
             case "Games":
