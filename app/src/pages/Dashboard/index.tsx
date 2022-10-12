@@ -1,97 +1,120 @@
 import * as S from "./style";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import OptionSpace from "./components/OptionSpace";
 import { Link } from "react-router-dom";
-import {Genrers,GenrerType} from "services/ServiceGenre"
+import { Genrers, GenrerType } from "services/ServiceGenre";
+import { AllGames, useGame, miniListGames } from "services/ServiceGames";
+import { AllProfile } from "services/ServiceProfile";
+import { Profile } from "types/api-types/profile";
+import {miniUser} from "types/api-types/user";
+import { AllUsers } from "services/ServiceUser";
 
-const Dashboard = () => {
+const Dashboard = (isAdmin: any) => {
+
   const [option, setOption] = useState("");
   const ThisOption = (state: string) => {
     setOption(state);
   };
 
-  const [genre, setGenre] = useState<GenrerType[]>([
-    {
-      id:"",
-      Name:""
-    }
-  ])
-
   useEffect(() => {
-    GenresRender()
+    GenresRender();
+    GamesRender();
+    ProfilesRender();
+    UsersRender();
   }, []);
 
+    // GENRE STATE
+    const [genre, setGenre] = useState<GenrerType[]>([{id: "",Name: "",},]);
   const GenresRender = async () => {
     const res = await Genrers.AllGenres();
     setGenre(res?.data);
   };
 
-  const data = [
-    { Nome: "Todos usuarios aqui" },
-    { Nome: "Guilherme Vieira" },
-    { Nome: "Fernando de Souza" },
-    { Nome: "Armando santos" },
-    { Nome: "Pierre Vigacci" },
-  ];
+  // GAMES STATE
+  const [games, setGames] = useState<miniListGames[]>([{ id: "", Title: "" }]);
+  const GamesRender = async () => {
+    const allGames = await AllGames.GamesAll();
+    setGames(allGames?.data);
+  };
 
-  const profilesdata = [
-    { Nome: "Eu" },
-    { Nome: "Guilherminho" },
-    { Nome: "El maradona" },
-    { Nome: "Relampago marquinhos" },
-    { Nome: "Mais rapido de totti itali" },
-  ];
+  // PROFILES STATE
+  const [profile, setProfile] = useState<Profile[]>([{ Title: "", ImageUrl: "", UserId:"" }]);
+  const ProfilesRender = async () => {
+    const allProfile = await AllProfile.ProfileAll();
+    setProfile(allProfile?.data);
+  };
 
-  const gamedata = [
-    { Nome: "todos os jogos da api" },
-  ];
+  // USERS STATE
+  const [users, setUsers] = useState<miniUser[]>([{ id: "",Name: ""}]);
+  const UsersRender = async () => {
+    const allUsers = await AllUsers.UsersAll();
+    setUsers(allUsers?.data);
+  };
 
-  const genredata = [
-    { Nome: "todos generos da api" },
-    { Nome: "Guilherme Vieira" },
-    { Nome: "Fernando de Souza" },
-    { Nome: "Armando santos" },
-    { Nome: "Pierre Vigacci" },
-  ];
 
-  return (
-    <S.Container>
-      <Div>
-        <Div3>
-          <Div4 >
-            <Column >
-              <Text onClick={() => ThisOption("Users")}>Usuários</Text>
-            </Column>
-            <Column>
-              <Text onClick={() => ThisOption("Profiles")}>Perfis</Text>
-            </Column>
-            <Column >
-              <Text onClick={() => ThisOption("Games")}>Games</Text>
-            </Column>
-            <Column >
-              <Text onClick={() => ThisOption("Genres")}>Gêneros</Text>
-            </Column>
-          </Div4>
-        </Div3>
-      </Div>
+  if (isAdmin.role) {
+    return (
+      <S.Container>
+        <Div>
+          <Div3>
+            <Div4>
+              <Column>
+                <Text onClick={() => ThisOption("Users")}>Usuários</Text>
+              </Column>
+              <Column>
+                <Text onClick={() => ThisOption("Profiles")}>Perfis</Text>
+              </Column>
+              <Column>
+                <Text onClick={() => ThisOption("Games")}>Games</Text>
+              </Column>
+              <Column>
+                <Text onClick={() => ThisOption("Genres")}>Gêneros</Text>
+              </Column>
+            </Div4>
+          </Div3>
+        </Div>
 
-      {(() => {
-        switch (option) {
-          case "Users":
-            return <OptionSpace name={option} data={data} />;
-          case "Profiles":
-            return <OptionSpace name={option} data={profilesdata} />;
-          case "Games":
-            return <OptionSpace name={option} data={gamedata} />;
-          case "Genres":
-            return <OptionSpace name={option} data={genredata} />;
-          default:
-            return null;
-        }
-      })()}
-    </S.Container>
-  );
+        {(() => {
+          switch (option) {
+            case "Users":
+              return <OptionSpace name={option} data={users} />;
+            case "Profiles":
+              return <OptionSpace name={option} data={profile} />;
+            case "Games":
+              return <OptionSpace name={option} data={games} />;
+            case "Genres":
+              return <OptionSpace name={option} data={genre} />;
+            default:
+              return null;
+          }
+        })()}
+      </S.Container>
+    );
+  } else {
+    return (
+      <S.Container>
+        <Div>
+          <Div3>
+            <Div4>
+              <Column>
+                <Text onClick={() => ThisOption("Profiles")}>Perfis</Text>
+              </Column>
+            </Div4>
+          </Div3>
+        </Div>
+
+        {(() => {
+          switch (option) {
+            case "Profiles":
+              return <OptionSpace name={option} data={profile} />;
+            default:
+              return null;
+          }
+        })()}
+      </S.Container>
+    );
+  }
 };
 
 export default Dashboard;
@@ -108,7 +131,7 @@ const Div = styled.div`
   padding: 50px 5rem 50px 1rem;
   @media (max-width: 999px) {
     padding: 0 2rem 1rem 2rem;
-    display:none;
+    display: none;
     background: red;
   }
   // DESKTOP
@@ -132,7 +155,6 @@ const Div3 = styled.div`
   max-width: 100%;
   align-self: stretch;
   width: 100vw;
-
 `;
 
 const Div4 = styled.div`

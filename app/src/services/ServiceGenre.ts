@@ -1,8 +1,9 @@
+import { Auth } from "helpers/Auth";
 import Api from "../api/gamestock";
 
 export interface GenrerType {
   id: string;
-  Name:string
+  Name: string;
 }
 
 export const Genrers = {
@@ -11,7 +12,7 @@ export const Genrers = {
       const res = await Api.get("/generos", { method: "GET" });
       return res;
     } catch (error: any) {
-      console.log('Error: '+ error);
+      console.log("Error: " + error);
     }
   },
 

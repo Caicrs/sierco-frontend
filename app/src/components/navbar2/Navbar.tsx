@@ -3,7 +3,7 @@ import arrowdown from "./img/arrow-down.svg";
 import arrowup from "./img/arrow-up.svg";
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
-import { setConstantValue } from "typescript";
+import { Auth } from "helpers/Auth";
 
 interface ButtonProps {
   username:  string;
@@ -41,6 +41,10 @@ const Navbar2 = ({username,changeState,page}: ButtonProps) => {
   }
   function Dashboard (){
     changeState(1)
+  }
+
+  function Logout(){
+    Auth.logout()
   }
 
   return (
@@ -81,9 +85,7 @@ const Navbar2 = ({username,changeState,page}: ButtonProps) => {
         </S.CreateBtn>
         <ThemeProvider theme={arrow === 0 ? OptionHidden : OptionVisible}>
           <S.OptionsContainer>
-            <S.List><S.ListLink to="/profile">Trocar Perfil</S.ListLink></S.List>
-            <S.Line></S.Line>
-            <S.List><S.ListLink to="/exit">Sair</S.ListLink></S.List>
+            <S.List onClick={Logout}>Sair</S.List>
             <S.Line></S.Line>
           </S.OptionsContainer>
         </ThemeProvider>

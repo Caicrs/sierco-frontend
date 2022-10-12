@@ -223,6 +223,7 @@ export const Line = styled.div`
 
 export const List = styled.div`
   ${({ theme }) => css`
+  cursor: pointer;
     width: 100%;
     height: fit-content;
     color: ${theme.colors.white};

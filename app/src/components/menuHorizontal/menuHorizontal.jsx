@@ -7,7 +7,7 @@ import rightArrow from "./img/arrow/rightArrow.svg";
 import { ThemeProvider } from "styled-components";
 import { motion } from "framer-motion";
 
-function MenuHorizontal({ option, menuState }) {
+function MenuHorizontal({ option, menuState,role }) {
   function myArrow({ type, onClick, isEdge }) {
     const pointer =
       type === consts.PREV ? (
@@ -36,15 +36,10 @@ function MenuHorizontal({ option, menuState }) {
         return menuState("Genres");
         case "Users":
         return menuState("Users");
-        case "Exit":
-        return menuState("Exit");
+        case "Logout":
+        return menuState("Logout");
       default:
         return "Home";
-    }
-    if (response === "Home") {
-      dispatch("Home");
-      menuState("Home");
-      alert(state);
     }
   }
 
@@ -56,6 +51,46 @@ function MenuHorizontal({ option, menuState }) {
     opacity: 0.25,
   };
 
+  if(role){
+    return (
+      <S.Container>
+        <Carousel
+          renderArrow={myArrow}
+          className="carousel"
+          transitionMs={300}
+          itemsToShow={2}
+        >
+          <ThemeProvider theme={option === "Home" ? OptionVisible : OptionHidden}>
+            <S.MenuText onClick={() => Change("Home")}>Home</S.MenuText>
+          </ThemeProvider>
+          <ThemeProvider
+            theme={option === "Profiles" ? OptionVisible : OptionHidden}
+          >
+            <S.MenuText onClick={() => Change("Profiles")}>Profiles</S.MenuText>
+          </ThemeProvider>
+          <ThemeProvider
+            theme={option === "Genres" ? OptionVisible : OptionHidden}
+          >
+            <S.MenuText onClick={() => Change("Genres")}>Genres</S.MenuText>
+          </ThemeProvider>
+          <ThemeProvider
+            theme={option === "Games" ? OptionVisible : OptionHidden}
+          >
+            <S.MenuText onClick={() => Change("Games")}>Games</S.MenuText>
+          </ThemeProvider>
+           <ThemeProvider
+            theme={option === "Users" ? OptionVisible : OptionHidden}
+          >
+            <S.MenuText onClick={() => Change("Users")}>Users</S.MenuText>
+          </ThemeProvider>
+          <ThemeProvider theme={option === "Logout" ? OptionVisible : OptionHidden}>
+            <S.MenuText onClick={() => Change("Logout")}>Logout</S.MenuText>
+          </ThemeProvider>
+        </Carousel>
+      </S.Container>
+    );
+  }
+else{
   return (
     <S.Container>
       <Carousel
@@ -72,26 +107,13 @@ function MenuHorizontal({ option, menuState }) {
         >
           <S.MenuText onClick={() => Change("Profiles")}>Profiles</S.MenuText>
         </ThemeProvider>
-        <ThemeProvider
-          theme={option === "Genres" ? OptionVisible : OptionHidden}
-        >
-          <S.MenuText onClick={() => Change("Genres")}>Genres</S.MenuText>
-        </ThemeProvider>
-        <ThemeProvider
-          theme={option === "Games" ? OptionVisible : OptionHidden}
-        >
-          <S.MenuText onClick={() => Change("Games")}>Games</S.MenuText>
-        </ThemeProvider>
-         <ThemeProvider
-          theme={option === "Users" ? OptionVisible : OptionHidden}
-        >
-          <S.MenuText onClick={() => Change("Users")}>Users</S.MenuText>
-        </ThemeProvider>
-        <ThemeProvider theme={option === "Exit" ? OptionVisible : OptionHidden}>
-          <S.MenuText onClick={() => Change("Exit")}>Log out</S.MenuText>
+        <ThemeProvider theme={option === "Logout" ? OptionVisible : OptionHidden}>
+          <S.MenuText onClick={() => Change("Logout")}>Logout</S.MenuText>
         </ThemeProvider>
       </Carousel>
     </S.Container>
   );
+}
+  
 }
 export default MenuHorizontal;

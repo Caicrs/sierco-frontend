@@ -3,75 +3,107 @@ import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import OptionSpace from "../../OptionSpace";
 import { Link } from "react-router-dom";
-import {Genrers,GenrerType} from "services/ServiceGenre"
+import { Genrers, GenrerType } from "services/ServiceGenre";
+import { miniListGames, AllGames } from "services/ServiceGames";
+import { AllProfile } from "services/ServiceProfile";
+import { AllUsers } from "services/ServiceUser";
+import { Profile } from "types/api-types/profile";
+import { miniUser, User, UserProfiles } from "types/api-types/user";
+import { Auth } from "helpers/Auth";
 
 interface Mobile {
-    myOption:string;
+  myOption: string;
+  role?: boolean;
 }
 
-const MobileDashboard = ({myOption}:Mobile) => {
+const MobileDashboard = ({ myOption, role }: Mobile) => {
   const [option, setOption] = useState("");
-  
-  const [genre, setGenre] = useState<GenrerType[]>([
-    {
-      id:"",
-      Name:""
-    }
-  ])
 
   useEffect(() => {
-    GenresRender()
+    GenresRender();
+    GamesRender();
+    ProfilesRender();
+    UsersProfileRender();
+    UsersRender();
   }, []);
 
+  // GENRE STATE
+  const [genre, setGenre] = useState<GenrerType[]>([{ id: "", Name: "" }]);
   const GenresRender = async () => {
     const res = await Genrers.AllGenres();
     setGenre(res?.data);
   };
 
-
-  const ThisOption = (state: string) => {
-    setOption(state);
+  // GAMES STATE
+  const [games, setGames] = useState<miniListGames[]>([{ id: "", Title: "" }]);
+  const GamesRender = async () => {
+    const allGames = await AllGames.GamesAll();
+    setGames(allGames?.data);
   };
 
-  const data = [
-    { Nome: "Todos usuarios aqui" },
-    { Nome: "Guilherme Vieira" },
-    { Nome: "Fernando de Souza" },
-    { Nome: "Armando santos" },
-    { Nome: "Pierre Vigacci" },
-  ];
+  // PROFILES STATE
+  const [profile, setProfile] = useState<Profile[]>([
+    { Title: "", ImageUrl: "", UserId: "" },
+  ]);
+  const ProfilesRender = async () => {
+    const allProfile = await AllProfile.ProfileAll();
+    setProfile(allProfile?.data);
+  };
 
-  const profilesdata = [
-    { Nome: "Eu" },
-    { Nome: "Guilherminho" },
-    { Nome: "El maradona" },
-    { Nome: "Relampago marquinhos" },
-    { Nome: "Mais rapido de totti itali" },
-  ];
+  const user = Auth.isAdmin();
 
-  const gamedata = [
-    { Nome: "todos os jogos da api" },
-  ];
+  // USERS FOR PROFILES STATE
+  const [usersProfile, setUsersProfile] = useState<UserProfiles[]>([
+    { id: "", Profiles: [] },
+  ]);
+  const UsersProfileRender = async () => {
+    const allUsersProfile = await AllUsers.UserById(user.id);
+    setUsersProfile(allUsersProfile?.data);
+  };
 
-  return (
-    <S.Container>
+  // ALL USERS STATE
+  const [users, setUsers] = useState<miniUser[]>([
+    { id: "", Name: "" },
+  ]);
+  const UsersRender = async () => {
+    const allUsers = await AllUsers.UsersAll();
+    setUsers(allUsers?.data);
+  };
 
-      {(() => {
-        switch (myOption) {
-          case "Users":
-            return <OptionSpace name={myOption} data={data} />;
-          case "Profiles":
-            return <OptionSpace name={myOption} data={profilesdata} />;
-          case "Games":
-            return <OptionSpace name={myOption} data={gamedata} />;
-          case "Genres":
-            return <OptionSpace name={myOption} data={gamedata} />;
-          default:
-            return null;
-        }
-      })()}
-    </S.Container>
-  );
+
+  if (role) {
+    return (
+      <S.Container>
+        {(() => {
+          switch (myOption) {
+            case "Users":
+              return <OptionSpace name={myOption} data={users} />;
+            case "Profiles":
+              return <OptionSpace name={myOption} data={profile} />;
+            case "Games":
+              return <OptionSpace name={myOption} data={games} />;
+            case "Genres":
+              return <OptionSpace name={myOption} data={genre} />;
+            default:
+              return null;
+          }
+        })()}
+      </S.Container>
+    );
+  } else {
+    return (
+      <S.Container>
+        {(() => {
+          switch (myOption) {
+            case "Profiles":
+              return <OptionSpace name={myOption} data={games} />;
+            default:
+              return null;
+          }
+        })()}
+      </S.Container>
+    );
+  }
 };
 
 export default MobileDashboard;
@@ -88,7 +120,7 @@ const Div = styled.div`
   padding: 50px 5rem 50px 1rem;
   @media (max-width: 999px) {
     padding: 0 2rem 1rem 2rem;
-    display:none;
+    display: none;
     background: red;
   }
   // DESKTOP
@@ -112,7 +144,6 @@ const Div3 = styled.div`
   max-width: 100%;
   align-self: stretch;
   width: 100vw;
-
 `;
 
 const Div4 = styled.div`

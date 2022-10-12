@@ -1,5 +1,10 @@
 import api from "../api/gamestock";
 
+export interface miniListGames {
+  id: string;
+  Title: string;
+}
+
 export interface useGame {
   id?: string;
   Title: string;
@@ -9,14 +14,12 @@ export interface useGame {
   ImdbScore: number;
   TrailerYoutubeUrl: string;
   GameplayYoutubeUrl: string;
-  
 }
 
 export const AllGames = {
   GamesAll: async () => {
     try {
       const res = await api.get("/games", { method: "GET" });
-      console.log(res)
       return res;
     } catch (error: any) {
       console.log(error);
@@ -58,5 +61,4 @@ export const AllGames = {
       console.log(error);
     }
   },
-
 };
