@@ -1,20 +1,31 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styled, { css } from "styled-components";
 import edit from "../img/edit.svg";
 import trash from "../img/trash.svg";
 import Form from "./Form";
 
-
-
 const OptionSpace = ({ ...props }) => {
   const [state, setState] = useState("");
 
+  useEffect(() => {
+    setProfile(props.data);
+  }, []);
 
   function Test(set: string) {
     setState(set);
-    console.log(set);
+
   }
+
+  // PROFILES STATE
+  const [profile, setProfile] = useState<any>([
+    { Title: ""},
+  ]);
+
+    
+ 
+
+
 
   return (
     <>
@@ -34,7 +45,7 @@ const OptionSpace = ({ ...props }) => {
           </Title>
         </Div3>
         <Div4>
-          {props.data.map((item: any) => (
+        {props.data.map((item: any) => (
             <Column key={item.id}>
               <Text>{item.Name || item.Title}</Text>
               <Icon src={edit}></Icon>

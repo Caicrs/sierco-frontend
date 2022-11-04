@@ -7,9 +7,11 @@ import { Genrers, GenrerType } from "services/ServiceGenre";
 import { miniListGames, AllGames } from "services/ServiceGames";
 import { AllProfile } from "services/ServiceProfile";
 import { AllUsers } from "services/ServiceUser";
-import { Profile } from "types/api-types/profile";
+import { Profile, ProfilesByUser } from "types/api-types/profile";
 import { miniUser, User, UserProfiles } from "types/api-types/user";
 import { Auth } from "helpers/Auth";
+import { Title } from "components/footer/style";
+import { AuthService } from "services/AuthServices";
 
 interface Mobile {
   myOption: string;
@@ -22,7 +24,7 @@ const MobileDashboard = ({ myOption, role }: Mobile) => {
   useEffect(() => {
     GenresRender();
     GamesRender();
-    ProfilesRender();
+    HomepageRender();
     UsersProfileRender();
     UsersRender();
   }, []);
@@ -42,15 +44,14 @@ const MobileDashboard = ({ myOption, role }: Mobile) => {
   };
 
   // PROFILES STATE
-  const [profile, setProfile] = useState<Profile[]>([
-    { Title: "", ImageUrl: "", UserId: "" },
-  ]);
-  const ProfilesRender = async () => {
-    const allProfile = await AllProfile.ProfileAll();
-    setProfile(allProfile?.data);
+  const [homepage, setHomepage] = useState<any>([]);
+  const HomepageRender = async () => {
+    const allProfiles = await AllProfile.ProfilesByUser();
+    setHomepage(allProfiles?.data);
   };
 
   const user = Auth.isAdmin();
+
 
   // USERS FOR PROFILES STATE
   const [usersProfile, setUsersProfile] = useState<UserProfiles[]>([
@@ -58,7 +59,7 @@ const MobileDashboard = ({ myOption, role }: Mobile) => {
   ]);
   const UsersProfileRender = async () => {
     const allUsersProfile = await AllUsers.UserById(user.id);
-    setUsersProfile(allUsersProfile?.data);
+    setUsersProfile(allUsersProfile?.data.Profiles);
   };
 
   // ALL USERS STATE
@@ -79,7 +80,7 @@ const MobileDashboard = ({ myOption, role }: Mobile) => {
             case "Users":
               return <OptionSpace name={myOption} data={users} />;
             case "Profiles":
-              return <OptionSpace name={myOption} data={profile} />;
+              return <OptionSpace name={myOption} data={usersProfile} />;
             case "Games":
               return <OptionSpace name={myOption} data={games} />;
             case "Genres":
@@ -96,7 +97,7 @@ const MobileDashboard = ({ myOption, role }: Mobile) => {
         {(() => {
           switch (myOption) {
             case "Profiles":
-              return <OptionSpace name={myOption} data={games} />;
+              return <OptionSpace name={myOption} data={homepage} />;
             default:
               return null;
           }
