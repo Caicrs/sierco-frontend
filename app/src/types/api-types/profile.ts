@@ -3,6 +3,12 @@ export interface Profile {
     ImageUrl: string;
     UserId:string;
   }
+
+  export interface ProfilesByUser {
+    Title: string;
+    ImageUrl: string;
+    UserId:string;
+  }
   
   export interface ProfileUpdate {
     profile: Profile;

@@ -4,6 +4,7 @@ import Home from "pages/Home/index";
 import Login from "pages/Login/index";
 import Register from "pages/Register";
 import HomeUser from "pages/Home_User";
+import GameDetails from "pages/GameDetails";
 import { Auth } from "helpers/Auth";
 
 const AuthenticatedRoutes = () => {
@@ -20,6 +21,7 @@ const Router = () => {
 
       <Route path="/" element={<AuthenticatedRoutes />}>
         <Route path={RoutePath.HOME_USER} element={<HomeUser />} />
+        <Route path={RoutePath.GAMEPAGE} element={<GameDetails />} />
       </Route>
     </Routes>
   );

@@ -5,4 +5,5 @@ export enum RoutePath {
     REGISTER = '/register',
     DASHBOARD = '/dashboard',
     GAMESADMIN = '/games',
+    GAMEPAGE = 'homepage/game/:id'
   }

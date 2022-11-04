@@ -26,7 +26,7 @@ export const AllGames = {
     }
   },
 
-  GameById: async (id: string) => {
+  GameById: async (id: any) => {
     try {
       const res = await api.get(`/games/${id}`);
       return res;

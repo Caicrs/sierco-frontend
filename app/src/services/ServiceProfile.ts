@@ -11,6 +11,15 @@ export const AllProfile = {
     }
   },
 
+  ProfilesByUser: async () => {
+    try {
+      const res = await api.get("/homepage", { method: "GET" });
+      return res;
+    } catch (error: any) {
+      console.log(error);
+    }
+  },
+
   ProfileById: async (id: string) => {
     try {
       const res = await api.get(`/profile/${id}`);
