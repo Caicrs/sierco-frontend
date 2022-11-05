@@ -1,48 +1,68 @@
 import * as S from "./style";
-import eye1 from "./img/eye-open.svg";
-import eye2 from "./img/eye-hidden.svg";
 import { useState } from "react";
-import bg from "./img/login-bg.svg"
+import { LocalStorageHelper } from "helpers/LocalStorageHelper";
+import { QueryClient, QueryClientProvider, useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { AuthService } from "services/AuthServices";
+import { ErrorResponse } from "types/api-types/error";
+import { Login as LoginData, LoginResponse } from "types/api-types/login";
+import { User } from "types/api-types/user";
+import { LocalStorageKeys } from "types/LocalStorageKeys";
+import { RoutePath } from "types/routes";
+import BoxLogin from "./components/BoxLogin";
 
-const Login = () => {
-  const [eyeicon, setEyeicon] = useState(eye2);
+const queryClient = new QueryClient()
+
+export default function Login() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <MainLogin />
+    </QueryClientProvider>
+  )
+}
+
+const MainLogin = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+
+  const mutation = useMutation(AuthService.login, {
+    onSuccess: (data: LoginResponse & ErrorResponse) => {
+      if (data.statusCode) {
+        console.log(data)
+        setErrorMessage(data.message);
+        return;
+      }
+      if (data.token && data.user) {
+        LocalStorageHelper.set<string>(LocalStorageKeys.TOKEN, data.token);
+        LocalStorageHelper.set<User>(LocalStorageKeys.USER, data.user);
+        navigate(RoutePath.PROFILES);
+      }
+      setErrorMessage("Tente novamente!");
+    },
+
+    onError: () => {
+      setErrorMessage("Ocorreu um erro durante a requisição");
+    },
+  });
+
+  const handleSubmit = (data: LoginData) => {
+    mutation.mutate(data);
+    setErrorMessage("");
+  };
 
   //
   return (
-    <S.Container >
-
-      <S.Form>
-        <S.FormBox>
-          <S.Logo>SIER.co</S.Logo>
-          <S.InputGroup>
-            <S.InputContainer>
-              <S.Input placeholder="Email"></S.Input>
-            </S.InputContainer>
-            <S.InputContainer>
-              <S.InputPass
-                placeholder="Senha"
-                type={eyeicon === eye2 ? "password" : "text"}
-              ></S.InputPass>
-              <S.Eye>
-                <S.Icon
-                  src={eyeicon}
-                  onClick={() => setEyeicon(eyeicon === eye2 ? eye1 : eye2)}
-                ></S.Icon>
-              </S.Eye>
-            </S.InputContainer>
-          </S.InputGroup>
-
-          <S.Btn_Entrar>Entrar</S.Btn_Entrar>
-          <S.SmallText>
-            Não tem uma conta ?{" "}
-            <S.Link_Create to="/register">
-              <strong>Criar conta</strong>
-            </S.Link_Create>
-          </S.SmallText>
-        </S.FormBox>
-      </S.Form>
-    </S.Container>
+    <>
+      <S.Container>
+        <S.TextBg>SIER.co</S.TextBg>
+        <S.TextBg2>SIER.co</S.TextBg2>
+        <S.TextBg>SIER.co</S.TextBg>
+        <S.TextBg2>SIER.co</S.TextBg2>
+        <S.Form>
+          <BoxLogin onSubmitData={handleSubmit} errorMessage={errorMessage} />
+        </S.Form>
+      </S.Container>
+    </>
   );
 };
 
-export default Login;

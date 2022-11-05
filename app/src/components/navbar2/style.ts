@@ -25,7 +25,6 @@ export const NavbarDiv = styled.div`
     }
     // Tablet
     @media (min-width: ${mobile}) {
-
     }
     // Desktop
     @media (min-width: ${tablet}) {
@@ -51,13 +50,11 @@ export const LogoText = styled.h1`
     }
     // Tablet
     @media (min-width: ${mobile}) {
-
     }
     // Desktop
     @media (min-width: ${tablet}) {
       font-size: 2.5rem;
       width: fit-content;
-      background: red;
       padding: 1rem 0 1rem 5rem;
     }
   `}
@@ -77,7 +74,6 @@ export const LogoNav = styled.div`
     padding: 0 5rem 0 0;
     float: right;
     text-align: right;
-    background: red;
   }
 `;
 
@@ -227,13 +223,20 @@ export const Line = styled.div`
 
 export const List = styled.div`
   ${({ theme }) => css`
+  cursor: pointer;
     width: 100%;
     height: fit-content;
-    text-align: right;
     color: ${theme.colors.white};
+    text-align:right;
     padding: 1rem 0 1rem 0;
     margin-right: 1rem;
   `};
+`;
+
+export const ListLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
 `;
 
 export const Button = styled.button`

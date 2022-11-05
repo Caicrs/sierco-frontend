@@ -65,7 +65,6 @@ export const CreateBtn = styled.div`
 
 export const NavbarLink = styled(Link)`
   color: white;
-
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
