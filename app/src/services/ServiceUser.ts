@@ -20,7 +20,7 @@ export const AllUsers = {
     }
   },
 
-  CreateProfile: async (user: User) => {
+  CreateUser: async (user: User) => {
     try {
       const res = await api.post("/user", user);
       return res;

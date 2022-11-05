@@ -4,18 +4,81 @@ import eye2 from "../Login/img/eye-hidden.svg";
 import { useState } from "react";
 import Footer from "../../components/footer/footer";
 import Login from "../Login/index";
+import { LocalStorageHelper } from "helpers/LocalStorageHelper";
+import { AuthService } from "services/AuthServices";
+import { ErrorResponse } from "types/api-types/error";
+import { Register, RegisterResponse } from "types/api-types/register";
+import { Login as LoginData, LoginResponse } from "types/api-types/login";
+import { User } from "types/api-types/user";
+import { LocalStorageKeys } from "types/LocalStorageKeys";
+import { RoutePath } from "types/routes";
+import { useNavigate } from "react-router-dom";
+import { AllUsers } from "services/ServiceUser";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useMutation,
+} from "@tanstack/react-query";
 
-const Register = () => {
+const queryClient = new QueryClient();
+
+export default function RegisterPage() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <MainPage />
+    </QueryClientProvider>
+  );
+}
+
+const MainPage = () => {
   const [eyeicon, setEyeicon] = useState(eye2);
   const [level, setLevel] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpf, setCpf] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function Register2() {
-    alert(name + email + password + cpf);
+  const navigate = useNavigate();
+
+  const mutation = useMutation(AuthService.login, {
+    onSuccess: (data: LoginResponse & ErrorResponse) => {
+      if (data.statusCode) {
+        console.log(data);
+        setErrorMessage(data.message);
+        return;
+      }
+      if (data.token && data.user) {
+        LocalStorageHelper.set<string>(LocalStorageKeys.TOKEN, data.token);
+        LocalStorageHelper.set<User>(LocalStorageKeys.USER, data.user);
+        navigate(RoutePath.HOME_USER);
+      }
+      setErrorMessage("Tente novamente!");
+    },
+
+    onError: () => {
+      setErrorMessage("Ocorreu um erro durante a requisição");
+    },
+  });
+
+  function registerSubmit() {
+    const mydata = {
+      Email: email,
+      Password: password,
+      confirmPassword: password,
+      Name: name,
+      Cpf: cpf,
+      IsAdmin: false,
+    };
+    AllUsers.CreateUser(mydata);
+    const myLogin = { Email: mydata.Email, Password: mydata.Password };
+    handleSubmit(myLogin)
   }
+
+  const handleSubmit = (data: LoginData) => {
+    mutation.mutate(data);
+    setErrorMessage("");
+  };
 
   return (
     <>
@@ -107,7 +170,7 @@ const Register = () => {
                   <S.Buttons onClick={() => setLevel(0)}>Voltar</S.Buttons>
                 </S.SubBtns>
                 <S.SubBtns>
-                  <S.NextBtn onClick={Register2}>Finalizar</S.NextBtn>
+                  <S.NextBtn onClick={registerSubmit}>Finalizar</S.NextBtn>
                 </S.SubBtns>
               </S.Btns>
             )}
@@ -118,5 +181,3 @@ const Register = () => {
     </>
   );
 };
-
-export default Register;

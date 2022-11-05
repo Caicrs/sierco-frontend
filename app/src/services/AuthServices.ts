@@ -2,6 +2,7 @@ import { Api } from "helpers/endpoint/Api";
 import { endpoint } from "helpers/endpoint";
 import { ErrorResponse } from "types/api-types/error";
 import { Login, LoginResponse } from "types/api-types/login";
+import {Register, RegisterResponse} from "types/api-types/register";
 import { Admin, User } from "types/api-types/user";
 import api from "api/gamestock";
 
@@ -18,6 +19,18 @@ export const AuthService = {
     })
       .then((response) => response.json())
       .catch((error) => console.log(error)),
+
+  register: (registerData:Register):Promise<RegisterResponse & ErrorResponse> =>
+  Api(endpoint.createUser(),{
+    method:"POST",
+    body: JSON.stringify(registerData),
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "",
+      },
+  }).then((response) => response.json())
+  .catch((error) => console.log(error)),
 
   me: (): Promise<User> =>
     Api(endpoint.auth(), { method: "GET" }).then((response) => response.json()),
