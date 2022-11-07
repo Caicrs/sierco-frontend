@@ -35,7 +35,7 @@ const MainLogin = () => {
       if (data.token && data.user) {
         LocalStorageHelper.set<string>(LocalStorageKeys.TOKEN, data.token);
         LocalStorageHelper.set<User>(LocalStorageKeys.USER, data.user);
-        navigate(RoutePath.PROFILES);
+        navigate(RoutePath.PROFILES)
       }
       setErrorMessage("Tente novamente!");
     },
