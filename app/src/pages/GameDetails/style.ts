@@ -45,6 +45,19 @@ export const Title = styled.div`
   `}
 `;
 
+export const Genre = styled.div`
+  width: fit-content;
+  display: flex;
+  padding:1rem 2rem ;
+  opacity: 0.5;
+`;
+
+export const DualText = styled.div`
+  display: flex;
+  width: fit-content;
+  margin:0 auto;
+`;
+
 export const Description = styled.div`
   ${({ theme }) => css`
     width: 80vw;
@@ -103,6 +116,7 @@ export const StarIcon = styled.img`
 
 export const ImgBox = styled.div`
   margin: 0 auto;
+  width: fit-content;
   // Mobile
   @media (min-width: 0) and (max-width: ${tablet}) {
     width: 80vw;
@@ -115,6 +129,7 @@ export const ImgBox = styled.div`
 
 export const Img = styled.img`
   margin: 0 auto;
+  width: 300px;
   // Mobile
   @media (min-width: 0) and (max-width: ${tablet}) {
     width: 100%;
