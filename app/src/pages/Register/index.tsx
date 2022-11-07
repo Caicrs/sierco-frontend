@@ -14,6 +14,7 @@ import { LocalStorageKeys } from "types/LocalStorageKeys";
 import { RoutePath } from "types/routes";
 import { useNavigate } from "react-router-dom";
 import { AllUsers } from "services/ServiceUser";
+import { validEmail, validPassword } from "./regex.js";
 import {
   QueryClient,
   QueryClientProvider,
@@ -38,6 +39,7 @@ const MainPage = () => {
   const [password, setPassword] = useState("");
   const [cpf, setCpf] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorEmailMessage, setErrorEmailMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -46,18 +48,24 @@ const MainPage = () => {
       if (data.statusCode) {
         console.log(data);
         setErrorMessage(data.message);
-        return;
       }
       if (data.token && data.user) {
         LocalStorageHelper.set<string>(LocalStorageKeys.TOKEN, data.token);
         LocalStorageHelper.set<User>(LocalStorageKeys.USER, data.user);
-        navigate(RoutePath.HOME_USER);
+        console.log(data.token)
+        console.log(data.user)
+        console.log(data)
+        setTimeout(() => navigate(RoutePath.PROFILES), 1000 * 5);
       }
       setErrorMessage("Tente novamente!");
+      setTimeout(() => setErrorMessage(""), 1000 * 5);
     },
 
     onError: () => {
-      setErrorMessage("Ocorreu um erro durante a requisição");
+      setErrorMessage(
+        "A senha precisa ter mais de 8 digitos e algum digito especial"
+      );
+      setTimeout(() => setErrorMessage(""), 1000 * 5);
     },
   });
 
@@ -70,12 +78,28 @@ const MainPage = () => {
       Cpf: cpf,
       IsAdmin: false,
     };
-    AllUsers.CreateUser(mydata);
-    const myLogin = { Email: mydata.Email, Password: mydata.Password };
-    handleSubmit(myLogin)
+
+    const validate = () => {
+      if (!validEmail.test(mydata.Email)) {
+        setErrorEmailMessage("Insira um email valido");
+        setTimeout(() => setErrorEmailMessage(""), 1000 * 5);
+      }
+      else if (!validPassword.test(mydata.Password)) {
+        setErrorMessage(
+          "Insira uma senha com 8 digitos com simbolos maiusculos,minusculos e números"
+        );
+        setTimeout(() => setErrorMessage(""), 1000 * 5);
+      } else {
+        AllUsers.CreateUser(mydata);
+        const myLogin = { Email: mydata.Email, Password: mydata.Password };
+        setTimeout(() => mutation.mutate(myLogin), 1000 * 5);
+      }
+    };
+    validate();
   }
 
   const handleSubmit = (data: LoginData) => {
+    console.log(data)
     mutation.mutate(data);
     setErrorMessage("");
   };
@@ -83,6 +107,10 @@ const MainPage = () => {
   return (
     <>
       <S.Container>
+        {errorMessage !== "" ? <S.Toast>{errorMessage}</S.Toast> : null}
+        {errorEmailMessage !== "" ? (
+          <S.Toast2>{errorEmailMessage}</S.Toast2>
+        ) : null}
         <S.TextBg>SIER.co</S.TextBg>
         <S.TextBg2>SIER.co</S.TextBg2>
         <S.Form>

@@ -3,8 +3,11 @@ import Navbar from "components/navbar/Navbar";
 import Session1 from "./components/session_1";
 import Footer from "../../components/footer/footer";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { RoutePath } from "types/routes";
 
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <S.Home>
       <motion.div 
@@ -14,7 +17,7 @@ const Home = () => {
         <Navbar></Navbar>
         <Session1></Session1>
         <S.MobileButtons>
-          <S.BtnMobile>Criar Conta</S.BtnMobile>
+          <S.BtnMobile onClick={() => navigate(RoutePath.REGISTER)}>Criar Conta</S.BtnMobile>
           <S.H3>Ou</S.H3>
           <S.TextContainer>
             <S.Text to={"/login"}>

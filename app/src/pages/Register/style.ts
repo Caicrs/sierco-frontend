@@ -5,6 +5,36 @@ const mobile: string = "480px";
 const desktop: string = "1024px";
 const tablet: string = "825px";
 
+export const Toast = styled.div`
+  ${({ theme }) => css`
+    width: 250px;
+    padding: 1rem 2rem;
+    background: ${theme.colors.logoColor};
+    border-radius: 1rem;
+    font-weight:600;
+    color:${theme.colors.baseBg1};
+    font-size: 0.65rem;
+    left: 2rem;
+    top: 2rem;
+    position: absolute;
+  `}
+`;
+
+export const Toast2 = styled.div`
+  ${({ theme }) => css`
+    width: 250px;
+    padding: 1rem 2rem;
+    background: ${theme.colors.logoColor};
+    border-radius: 1rem;
+    font-weight:600;
+    color:${theme.colors.baseBg1};
+    font-size: 0.65rem;
+    left: 2rem;
+    top: 6rem;
+    position: absolute;
+  `}
+`;
+
 export const Container = styled.section`
   ${({ theme }) => css`
     background-color: ${theme.colors.baseBg1};
@@ -27,7 +57,7 @@ export const TextBg = styled.h1`
   ${({ theme }) => css`
     font-size: 22rem;
     width: 100%;
-    opacity:0.5;
+    opacity: 0.5;
     text-align: center;
     position: fixed;
     background: #fae634;
@@ -35,25 +65,25 @@ export const TextBg = styled.h1`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: -2rem 0;
-       // Mobile
-  @media screen and (min-width: 0) and (max-width: ${mobile}) {
-    transform: rotate(-45deg);
-    opacity:0.25;
-  }
-  // Tablet
-  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    transform: rotate(-45deg);
-    opacity:0.25;
-    margin: 5% 20% 0 0 ;
-    font-size: 28rem;
-  }
+    // Mobile
+    @media screen and (min-width: 0) and (max-width: ${mobile}) {
+      transform: rotate(-45deg);
+      opacity: 0.25;
+    }
+    // Tablet
+    @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
+      transform: rotate(-45deg);
+      opacity: 0.25;
+      margin: 5% 20% 0 0;
+      font-size: 28rem;
+    }
   `}
 `;
 export const TextBg2 = styled.h1`
   ${({ theme }) => css`
     font-size: 22rem;
     width: 100%;
-    opacity:0.5;
+    opacity: 0.5;
     text-align: center;
     position: fixed;
     background: #fae634;
@@ -62,18 +92,18 @@ export const TextBg2 = styled.h1`
     -webkit-text-fill-color: transparent;
     margin: 18rem 0;
     transform: rotate(180deg);
-      // Mobile
-  @media screen and (min-width: 0) and (max-width: ${mobile}) {
-    transform: rotate(135deg);
-    opacity:0.5;
-  }
-  // Tablet
-  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    transform: rotate(135deg);
-    opacity:0.5;
-    margin: 60% 0 0 10%;
-    font-size: 28rem;
-  }
+    // Mobile
+    @media screen and (min-width: 0) and (max-width: ${mobile}) {
+      transform: rotate(135deg);
+      opacity: 0.5;
+    }
+    // Tablet
+    @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
+      transform: rotate(135deg);
+      opacity: 0.5;
+      margin: 60% 0 0 10%;
+      font-size: 28rem;
+    }
   `}
 `;
 
@@ -83,7 +113,7 @@ export const Form = styled.div`
     width: 100vw;
     height: 100vh;
     position: relative;
-    background: rgb(43, 43, 42,0.25);
+    background: rgb(43, 43, 42, 0.25);
     backdrop-filter: blur(5px);
   }
   // Tablet
@@ -91,7 +121,7 @@ export const Form = styled.div`
     width: 100vw;
     height: 100vh;
     position: relative;
-    background: rgb(43, 43, 42,0.25);
+    background: rgb(43, 43, 42, 0.25);
     backdrop-filter: blur(5px);
   }
   // Desktop
@@ -101,7 +131,6 @@ export const Form = styled.div`
     margin: 0 auto;
     position: absolute;
     top: 12%;
-
   }
 `;
 
@@ -124,8 +153,8 @@ export const FormBox = styled.div`
       border-radius: 1rem;
       background: ${theme.colors.baseBg1};
       margin: 0 auto;
-      background: rgb(43, 43, 42,0.65);
-    backdrop-filter: blur(5px);
+      background: rgb(43, 43, 42, 0.65);
+      backdrop-filter: blur(5px);
     }
   `}
 `;
@@ -170,12 +199,12 @@ export const Input = styled.input`
       color: white;
       font-weight: 300;
     }
-     // Tablet
-  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    ::placeholder {
-      font-size: 1rem;
+    // Tablet
+    @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
+      ::placeholder {
+        font-size: 1rem;
+      }
     }
-  }
     &:focus {
       outline: none;
     }
@@ -197,12 +226,12 @@ export const InputPass = styled.input`
       color: white;
       font-weight: 300;
     }
-        // Tablet
-  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    ::placeholder {
-      font-size: 1rem;
+    // Tablet
+    @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
+      ::placeholder {
+        font-size: 1rem;
+      }
     }
-  }
     &:focus {
       outline: none;
     }
@@ -241,7 +270,7 @@ export const Btns = styled.div`
     // Tablet
     @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
       height: fit-content;
-       margin: 15% auto 0 auto;
+      margin: 15% auto 0 auto;
       padding: 0;
     }
   `}
