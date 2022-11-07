@@ -3,6 +3,10 @@ import { LocalStorageHelper } from "./LocalStorageHelper";
 import { RoutePath } from "types/routes";
 
 export const Auth = {
+    profile: (): any => {
+        const thisProfile = LocalStorageHelper.get(LocalStorageKeys.PROFILE)
+        return thisProfile
+    },
     user: (): any => {
         const thisUser = LocalStorageHelper.get(LocalStorageKeys.USER)
         return thisUser
