@@ -21,8 +21,6 @@ const Dashboard = (isAdmin: any) => {
   useEffect(() => {
     GenresRender();
     GamesRender();
-    ProfilesRender();
-    UsersRender();
   }, []);
 
     // GENRE STATE
@@ -64,12 +62,6 @@ const Dashboard = (isAdmin: any) => {
           <Div3>
             <Div4>
               <Column>
-                <Text onClick={() => ThisOption("Users")}>Usuários</Text>
-              </Column>
-              <Column>
-                <Text onClick={() => ThisOption("Profiles")}>Perfis</Text>
-              </Column>
-              <Column>
                 <Text onClick={() => ThisOption("Games")}>Games</Text>
               </Column>
               <Column>
@@ -81,10 +73,6 @@ const Dashboard = (isAdmin: any) => {
 
         {(() => {
           switch (option) {
-            case "Users":
-              return <OptionSpace name={option} data={users} />;
-            case "Profiles":
-              return <OptionSpace name={option} data={profile} />;
             case "Games":
               return <OptionSpace name={option} data={games} />;
             case "Genres":
@@ -108,14 +96,6 @@ const Dashboard = (isAdmin: any) => {
           </Div3>
         </Div>
 
-        {(() => {
-          switch (option) {
-            case "Profiles":
-              return <OptionSpace name={option} data={profile} />;
-            default:
-              return null;
-          }
-        })()}
       </S.Container>
     );
   }

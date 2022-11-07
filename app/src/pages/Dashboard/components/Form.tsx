@@ -29,34 +29,12 @@ const Form = ({ name, set, changeState }: ButtonProps) => {
   };
 
   switch (name) {
-    case "Users":
-      return (
-        <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
-          <Container>
-            <S.FormBox>
-              <UserForm />
-              <ExitBtn onClick={Change}>X</ExitBtn>
-            </S.FormBox>
-          </Container>
-        </ThemeProvider>
-      );
     case "Games":
       return (
         <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
           <Container>
             <S.FormBox>
               <GameForm />
-              <ExitBtn onClick={Change}>X</ExitBtn>
-            </S.FormBox>
-          </Container>
-        </ThemeProvider>
-      );
-    case "Profiles":
-      return (
-        <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
-          <Container>
-            <S.FormBox>
-              <ProfileForm />
               <ExitBtn onClick={Change}>X</ExitBtn>
             </S.FormBox>
           </Container>

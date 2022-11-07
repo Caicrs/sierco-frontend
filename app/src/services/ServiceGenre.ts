@@ -2,7 +2,7 @@ import { Auth } from "helpers/Auth";
 import Api from "../api/gamestock";
 
 export interface GenrerType {
-  id: string;
+  id?: string;
   Name: string;
 }
 

@@ -10,7 +10,7 @@ const OptionSpace = ({ ...props }) => {
   const [state, setState] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   // DATA STATE
-  const [content, setContent] = useState<any>([]);
+  const [content, setContent] = useState<any>([]);z
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 2000);
@@ -42,10 +42,10 @@ const OptionSpace = ({ ...props }) => {
               </Title>
             </Div3>
             <Div4>
-              {props.data.map((item: any) => (
+            {props.data.map((item: any) => (
                 <Column key={item.id}>
                   <Text>{item.Name || item.Title}</Text>
-                  <Icon onClick={() => Test("show")} src={edit}></Icon>
+                  <Icon onClick={() => Test(item.id)} src={edit}></Icon>
                   <Icon src={trash}></Icon>
                 </Column>
               ))}
