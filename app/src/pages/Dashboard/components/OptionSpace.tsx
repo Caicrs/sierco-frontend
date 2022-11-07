@@ -1,5 +1,6 @@
+import Loader from "pages/profiles/components/loader";
 import * as React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import edit from "../img/edit.svg";
 import trash from "../img/trash.svg";
@@ -7,53 +8,51 @@ import Form from "./Form";
 
 const OptionSpace = ({ ...props }) => {
   const [state, setState] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  // DATA STATE
+  const [content, setContent] = useState<any>([]);
 
   useEffect(() => {
-    setProfile(props.data);
+    setTimeout(() => setIsLoading(false), 2000);
   }, []);
 
   function Test(set: string) {
     setState(set);
-
   }
-
-  // PROFILES STATE
-  const [profile, setProfile] = useState<any>([
-    { Title: ""},
-  ]);
-
-    
- 
-
-
 
   return (
     <>
-      <Form
-        changeState={(currentState) => setState(currentState)}
-        name={props.name}
-        set={state}
-      />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Form
+            changeState={(currentState) => setState(currentState)}
+            name={props.name}
+            set={state}
+          />
 
-      <Div>
-        <Div3>
-          <Title>
-            <Div2>{props.name}</Div2>
-            <AddBtn>
-              <Btn onClick={() => Test("show")}>+</Btn>
-            </AddBtn>
-          </Title>
-        </Div3>
-        <Div4>
-        {props.data.map((item: any) => (
-            <Column key={item.id}>
-              <Text>{item.Name || item.Title}</Text>
-              <Icon src={edit}></Icon>
-              <Icon src={trash}></Icon>
-            </Column>
-          ))}
-        </Div4>
-      </Div>
+          <Div>
+            <Div3>
+              <Title>
+                <Div2>{props.name}</Div2>
+                <AddBtn>
+                  <Btn onClick={() => Test("show")}>+</Btn>
+                </AddBtn>
+              </Title>
+            </Div3>
+            <Div4>
+              {props.data.map((item: any) => (
+                <Column key={item.id}>
+                  <Text>{item.Name || item.Title}</Text>
+                  <Icon src={edit}></Icon>
+                  <Icon src={trash}></Icon>
+                </Column>
+              ))}
+            </Div4>
+          </Div>
+        </>
+      )}
     </>
   );
 };

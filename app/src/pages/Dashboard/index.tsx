@@ -9,6 +9,7 @@ import { AllProfile } from "services/ServiceProfile";
 import { Profile } from "types/api-types/profile";
 import {miniUser} from "types/api-types/user";
 import { AllUsers } from "services/ServiceUser";
+import { Auth } from "helpers/Auth";
 
 const Dashboard = (isAdmin: any) => {
 
@@ -39,11 +40,14 @@ const Dashboard = (isAdmin: any) => {
   };
 
   // PROFILES STATE
+  const id = Auth.user().id;
   const [profile, setProfile] = useState<Profile[]>([{ Title: "", ImageUrl: "", UserId:"" }]);
   const ProfilesRender = async () => {
-    const allProfile = await AllProfile.ProfileAll();
-    setProfile(allProfile?.data);
+    const res = await AllProfile.ProfilesByUser(id);
+    setProfile(res?.data.Profiles);
   };
+
+  console.log(profile)
 
   // USERS STATE
   const [users, setUsers] = useState<miniUser[]>([{ id: "",Name: ""}]);

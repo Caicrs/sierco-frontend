@@ -38,6 +38,7 @@ const MobileDashboard = ({ myOption, role }: Mobile) => {
 
   // GAMES STATE
   const [games, setGames] = useState<miniListGames[]>([{ id: "", Title: "" }]);
+  const id = Auth.user().id;
   const GamesRender = async () => {
     const allGames = await AllGames.GamesAll();
     setGames(allGames?.data);
@@ -46,8 +47,8 @@ const MobileDashboard = ({ myOption, role }: Mobile) => {
   // PROFILES STATE
   const [homepage, setHomepage] = useState<any>([]);
   const HomepageRender = async () => {
-    const allProfiles = await AllProfile.ProfilesByUser();
-    setHomepage(allProfiles?.data);
+    const allProfiles = await AllProfile.ProfilesByUser(id);
+    setHomepage(allProfiles?.data.Profiles);
   };
 
   const user = Auth.isAdmin();

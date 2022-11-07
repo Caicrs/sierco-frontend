@@ -1,6 +1,8 @@
+import { useState } from "react";
 import * as S from "../styleForm";
 
 const UserForm = () => {
+  const [data,setData] = useState<any>([])
   return (
     <>
       <S.InputGroup>
