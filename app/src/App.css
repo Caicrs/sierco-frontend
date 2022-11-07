@@ -4,6 +4,7 @@
   font-family: 'Sora', sans-serif;
   text-decoration: none;
   color: white;
+  overflow-x:hidden;
 }
 .a{
   color: white;
