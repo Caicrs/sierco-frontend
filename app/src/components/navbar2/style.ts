@@ -95,7 +95,8 @@ export const ButtonsNav2 = styled.div`
   }
   // Desktop
   @media (min-width: ${tablet}) {
-    width: 50%;
+    width:100%;
+    justify-content:center;
     display: flex;
     font-weight: 400;
     text-align: center;
