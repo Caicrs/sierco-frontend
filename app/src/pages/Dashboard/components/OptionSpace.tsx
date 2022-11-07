@@ -45,7 +45,7 @@ const OptionSpace = ({ ...props }) => {
               {props.data.map((item: any) => (
                 <Column key={item.id}>
                   <Text>{item.Name || item.Title}</Text>
-                  <Icon src={edit}></Icon>
+                  <Icon onClick={() => Test(item.id)} src={edit}></Icon>
                   <Icon src={trash}></Icon>
                 </Column>
               ))}
