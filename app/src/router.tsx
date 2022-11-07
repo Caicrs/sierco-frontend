@@ -21,8 +21,8 @@ const Router = () => {
       <Route path={RoutePath.REGISTER} element={<RegisterPage />} />
 
       <Route path="/" element={<AuthenticatedRoutes />}>
+      <Route path={RoutePath.GAMEPAGE} element={<GameDetails />} />
         <Route path={RoutePath.HOME_USER} element={<HomeUser />} />
-        <Route path={RoutePath.GAMEPAGE} element={<GameDetails />} />
         <Route path={RoutePath.PROFILES} element={<Profiles />}></Route>
       </Route>
     </Routes>

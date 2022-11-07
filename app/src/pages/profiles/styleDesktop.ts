@@ -2,6 +2,14 @@ import styled, { css } from "styled-components";
 
 const tablet: string = "825px";
 
+export const LoadContainer = styled.div`
+height:85vh;
+display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
 export const Container = styled.div`
   ${({ theme }) => css`
     width: 100vw;

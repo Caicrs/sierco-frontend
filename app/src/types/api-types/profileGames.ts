@@ -1,6 +1,6 @@
 export interface ProfileGames {
-    ProfileId: string;
-    GameId: string;
+    Profile: string;
+    Games: string;
   }
   
 export interface ProfileGamesUpdate {

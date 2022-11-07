@@ -1,6 +1,12 @@
 import api from "../api/gamestock";
 import { Profile } from "types/api-types/profile";
 
+export interface useProfile {
+    id: string,
+    Title: string,
+    ImageUrl: string,
+}
+
 export const AllProfile = {
   ProfileAll: async () => {
     try {
@@ -11,9 +17,9 @@ export const AllProfile = {
     }
   },
 
-  ProfilesByUser: async () => {
+  ProfilesByUser: async (id: string) => {
     try {
-      const res = await api.get("/homepage", { method: "GET" });
+      const res = await api.get(`/homepage/${id}`, { method: "GET" });
       return res;
     } catch (error: any) {
       console.log(error);
