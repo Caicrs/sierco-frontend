@@ -5,7 +5,9 @@ import * as S from "../styleForm";
 
 
 
-const GameForm = () => {
+const EditGameForm = ({data}:any) => {
+
+
 
   const navigate = useNavigate()
   const [game, setGame] = useState<any>({
@@ -17,10 +19,11 @@ const GameForm = () => {
     TrailerYouTubeUrl: "",
     GameplayYouTubeUrl: "",
   });
-  const [year,setYear] = useState(0)
 
-  function CreateGames() {
-    AllGames.CreateGame(game);
+  function EditGames(id:string) {
+    console.log(id)
+    console.log(game)
+    AllGames.EditGame(id, game);
     setTimeout(() => navigate(0), 2000);
   }
 
@@ -91,7 +94,7 @@ const GameForm = () => {
                   onChange={({ target }) =>
                                 setGame((prevState: any) => ({
                                   ...prevState,
-                                  TrailerYoutubeUrl: target.value,
+                                  TrailerYouTubeUrl: target.value,
                                 }))
                                 }>
         </S.InputPass>
@@ -102,16 +105,16 @@ const GameForm = () => {
                  onChange={({ target }) =>
                                setGame((prevState: any) => ({
                                  ...prevState,
-                                 GameplayYoutubeUrl: target.value,
+                                 GameplayYouTubeUrl: target.value,
                                }))
                                }>
         </S.InputPass>
       </S.InputContainer>
     </S.InputGroup>
-    <S.Btn_Entrar onClick={() => CreateGames()}>Enviar</S.Btn_Entrar>
+    <S.Btn_Entrar onClick={() => EditGames(data.id)}>Enviar</S.Btn_Entrar>
     </>
   
   );
 };
 
-export default GameForm;
+export default EditGameForm;

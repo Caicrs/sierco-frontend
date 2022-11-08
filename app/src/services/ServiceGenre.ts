@@ -34,9 +34,9 @@ export const Genrers = {
     }
   },
 
-  EditGenrer: async (id: string, genrer: GenrerType) => {
+  EditGenrer: async (id: string, Data: any) => {
     try {
-      const res = await Api.patch(`/generos/${id}`, genrer);
+      const res = await Api.patch(`/generos/${id}`, Data);
       return res;
     } catch (error: any) {
       console.log(error);

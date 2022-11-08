@@ -6,15 +6,17 @@ import UserForm from "./formTypes/users";
 import GameForm from "./formTypes/games";
 import GenreForm from "./formTypes/genres";
 import ProfileForm from "./formTypes/profile";
+import GenreEditForm from "./formTypes/genresEdit";
 import EditGameForm from "./formTypes/gamesEdit";
 
 interface ButtonProps {
   name: string;
   set: string;
+  data: any;
   changeState: (params: any) => any;
 }
 
-const Form = ({ name, set, changeState,}: ButtonProps) => {
+const FormEdit = ({ name, set, changeState, data }: ButtonProps) => {
   const [state, setState] = useState("");
 
   function Change() {
@@ -29,6 +31,7 @@ const Form = ({ name, set, changeState,}: ButtonProps) => {
     display: "block",
   };
 
+ 
 
     switch (name) {
       case "Games":
@@ -36,7 +39,7 @@ const Form = ({ name, set, changeState,}: ButtonProps) => {
           <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
             <Container>
               <S.FormBox>
-                <GameForm />
+                <EditGameForm data={data} />
                 <ExitBtn onClick={Change}>X</ExitBtn>
               </S.FormBox>
             </Container>
@@ -47,7 +50,7 @@ const Form = ({ name, set, changeState,}: ButtonProps) => {
           <ThemeProvider theme={set === "show" ? OptionSee : OptionHidden}>
             <Container>
               <S.FormBox>
-                <GenreForm/>
+                <GenreEditForm data={data}/>
                 <ExitBtn onClick={Change}>X</ExitBtn>
               </S.FormBox>
             </Container>
@@ -61,7 +64,7 @@ const Form = ({ name, set, changeState,}: ButtonProps) => {
  
 };
 
-export default Form;
+export default FormEdit;
 
 const mobile: string = "480px";
 const desktop: string = "1024px";

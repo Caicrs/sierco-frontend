@@ -44,9 +44,9 @@ export const AllGames = {
     }
   },
 
-  EditGame: async (id: string, game: useGame) => {
+  EditGame: async (id: string, Data: any) => {
     try {
-      const res = await api.patch(`/games/${id}`, game);
+      const res = await api.patch(`/games/${id}`, Data);
       return res;
     } catch (error: any) {
       console.log(error);

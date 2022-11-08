@@ -7,7 +7,7 @@ import { SetStateAction, useState } from "react";
 import Dashboard from "pages/Dashboard";
 import ProfileForm from "pages/Dashboard/components/formTypes/profile";
 import UserForm from "pages/Dashboard/components/formTypes/users";
-import GameForm from "pages/Dashboard/components/formTypes/games";
+import GameForm from "pages/Dashboard/components/formTypes/gamesEdit";
 import GenreForm from "pages/Dashboard/components/formTypes/genres";
 import MobileDashboard from "pages/Dashboard/components/formTypes/mobileDashboard/mobileDashboard";
 import { useMediaQuery } from "react-responsive";

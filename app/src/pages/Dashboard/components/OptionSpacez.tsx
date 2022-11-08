@@ -1,19 +1,14 @@
 import Loader from "pages/profiles/components/loader";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate, useRouteLoaderData } from "react-router-dom";
-import { AllGames } from "services/ServiceGames";
+import { Genrers } from "services/ServiceGenre";
 import styled, { css } from "styled-components";
 import edit from "../img/edit.svg";
 import trash from "../img/trash.svg";
 import Form from "./Form";
 import FormEdit from "./FormEdit";
 
-const OptionSpace = ({ ...props }) => {
-
-
-  const navigate = useNavigate()
-
+const OptionSpacez = ({ ...props }) => {
   const [state, setState] = useState("");
   const [data, setData] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -31,10 +26,10 @@ const OptionSpace = ({ ...props }) => {
     setState(set);
     setData(data);
   }
-  const DeleteGames = (id: string) => {
-    AllGames.DeleteGame(id);
-    setTimeout(() => navigate(0), 2000);  
-}
+
+  const DeleteGenrers = (id: string) => {
+      Genrers.DeleteGenrer(id);
+  }
 
   console.log(data);
 
@@ -74,7 +69,7 @@ const OptionSpace = ({ ...props }) => {
                 <Column key={item.id}>
                   <Text>{item.Name || item.Title}</Text>
                   <Icon onClick={() => TestS("show", item)} src={edit}></Icon>
-                  <Icon onClick={() => DeleteGames(item.id)}src={trash}></Icon>
+                  <Icon onClick={() => DeleteGenrers(item.id)} src={trash}></Icon>
                 </Column>
               ))}
             </Div4>
@@ -85,7 +80,7 @@ const OptionSpace = ({ ...props }) => {
   );
 };
 
-export default OptionSpace;
+export default OptionSpacez;
 
 const mobile: string = "768px";
 const desktop: string = "1024px";

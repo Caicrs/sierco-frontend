@@ -10,6 +10,7 @@ import { Profile } from "types/api-types/profile";
 import {miniUser} from "types/api-types/user";
 import { AllUsers } from "services/ServiceUser";
 import { Auth } from "helpers/Auth";
+import OptionSpacez from "./components/OptionSpacez";
 
 const Dashboard = (isAdmin: any) => {
 
@@ -76,7 +77,7 @@ const Dashboard = (isAdmin: any) => {
             case "Games":
               return <OptionSpace name={option} data={games} />;
             case "Genres":
-              return <OptionSpace name={option} data={genre} />;
+              return <OptionSpacez name={option} data={genre} />;
             default:
               return null;
           }
