@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "engines": {
     "yarn": "1.22.19"
-  }
+  },
 }
 "@adobe/css-tools@^4.0.1":
   version "4.0.1"
